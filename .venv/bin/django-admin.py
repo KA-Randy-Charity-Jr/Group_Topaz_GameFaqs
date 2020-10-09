@@ -1,4 +1,4 @@
-#!/Users/mjdemory/KA-Q4/Group_Topaz_GameFaqs/.venv/bin/python
+#!/mnt/c/Users/rakec/codepractice/group-topaz-gamefaqs/.venv/bin/python
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

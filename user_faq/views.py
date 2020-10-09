@@ -30,4 +30,4 @@ class signup_view(TemplateView):
                     password=data.get("password"),
                 )
                 login(request, new_user)
-                return HttpResponseRedirect(reverse('homepage'))
+                return HttpResponseRedirect(reverse('home'))

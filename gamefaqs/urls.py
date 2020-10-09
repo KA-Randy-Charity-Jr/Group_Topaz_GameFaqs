@@ -18,11 +18,25 @@ from django.urls import path
 
 from user_faq import views
 from authentication.views import login_view, logout_view
+from gamefaq_app import views as gamefaqviews
+from console_app import views as consoleviews
+from game_app import views as gameviews
+from news_app import views as newsviews
 
 urlpatterns = [
-    path('', views.index, name='homepage'),
     path('login_view/', login_view, name='login'),
     path('signup_view/', views.signup_view.as_view()),
     path('logout_view/', logout_view, name='logout'),
     path('admin/', admin.site.urls),
+    path('',gamefaqviews.indexview,name="home"),
+    path('gamefaq/<int:gamefaqid>/',gamefaqviews.gamefaqview,name="gamefaq"),
+    path('game/<int:gameid>/',gameviews.gamesview,name="game"),
+    path('newgamefaq/', gamefaqviews.newgamefaqview, name="newgamefaq"),
+    path('playstation/', consoleviews.PlaystationView, name="playstation"),
+    path('xbox/', consoleviews.XboxView, name="xbox"),
+    path('nintendo/', consoleviews.NintendoView, name="nintendo"),
+    path('pc/', consoleviews.PcView, name="pc"),
+    path("console/<int:console_id>/", consoleviews.consoleview, name="console"),
+    path("postnews/", newsviews.Newspostform.as_view(), name="newpost"),
+    path('newspost/<int:newsid>/',newsviews.NewpostView,name="newspostview")
 ]
