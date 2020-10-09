@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/mnt/c/users/rakec/codepractice/group-topaz-gamefaqs/.venv"
+VIRTUAL_ENV="/Users/mjdemory/KA-Q4/Group_Topaz_GameFaqs/.venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

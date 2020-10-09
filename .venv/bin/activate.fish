@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/mnt/c/users/rakec/codepractice/group-topaz-gamefaqs/.venv"
+set -gx VIRTUAL_ENV "/Users/mjdemory/KA-Q4/Group_Topaz_GameFaqs/.venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
