@@ -1,4 +1,4 @@
-#!/mnt/c/users/rakec/codepractice/group-topaz-gamefaqs/.venv/bin/python
+#!/Users/mjdemory/KA-Q4/Group_Topaz_GameFaqs/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
