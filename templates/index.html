@@ -1,0 +1,12 @@
+<div class="container">
+<h1>Topaz GameFAQs</h1>
+<ul>
+    <u><h3>Games:</h3></u>
+        {% for post in game %}
+        <li>
+            <a href="/game/{{ post.id }}/">{{ post.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
