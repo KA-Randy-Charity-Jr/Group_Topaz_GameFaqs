@@ -38,5 +38,6 @@ urlpatterns = [
     path('pc/', consoleviews.PcView, name="pc"),
     path("console/<int:console_id>/", consoleviews.consoleview, name="console"),
     path("postnews/", newsviews.Newspostform.as_view(), name="newpost"),
-    path('newspost/<int:newsid>/',newsviews.NewpostView,name="newspostview")
+    path('newspost/<int:newsid>/', newsviews.NewpostView, name="newspostview"),
+    path('search/', gamefaqviews.SearchResultsView.as_view(), name='search_results'),
 ]
