@@ -21,6 +21,8 @@ from authentication.views import login_view, logout_view
 
 urlpatterns = [
     path('', views.index, name='homepage'),
+    path('user_profile_view/<int:user_id>/edit/',views.edit_user_profile_view.as_view()),
+    path('user_profile_view/<int:user_id>/', views.user_profile_view, name='user_profile'),
     path('login_view/', login_view, name='login'),
     path('signup_view/', views.signup_view.as_view()),
     path('logout_view/', logout_view, name='logout'),

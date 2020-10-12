@@ -40,12 +40,13 @@ def user_profile_view(request, user_id):
 
 
 class edit_user_profile_view(TemplateView):
-    def get(self, request):
+    def get(self, request, user_id):
+        faq_user = GamefaqUser.objects.get(id=user_id)
         data = {
-            "displayname": GamefaqUser.displayname,
-            "bio": GamefaqUser.bio,
-            "preferred_systems": GamefaqUser.preferred_systems,
-            "email": GamefaqUser.email
+            "displayname": faq_user.displayname,
+            "bio": faq_user.bio,
+            "preferred_systems": faq_user.preferred_systems,
+            "email": faq_user.email
         }
         form = GamefaqUserForm(initial=data)
         return render(request, "basic.html", {"form": form})
@@ -61,4 +62,26 @@ class edit_user_profile_view(TemplateView):
                 faq_user.preferred_systems = data["preferred_systems"]
                 faq_user.email = data["email"]
                 faq_user.save()
-                return HttpResponseRedirect(reverse('ticket_detail', args=[faq_user.id]))
+                return HttpResponseRedirect(reverse('user_profile', args=[faq_user.id]))
+
+# def edit_user_profile_view(request, user_id):
+#     faq_user = GamefaqUser.objects.get(id=user_id)
+#     if request.method == "POST":
+#         form = GamefaqUserForm(request.POST)
+#         if form.is_valid():
+#             data = form.cleaned_data
+#             faq_user.displayname = data["displayname"]
+#             faq_user.bio = data["bio"]
+#             faq_user.preferred_systems = data["preferred_systems"]
+#             faq_user.email = data["email"]
+#             faq_user.save()
+#             return HttpResponseRedirect(reverse('user_profile', args=[faq_user.id]))
+
+#     data = {
+#     "displayname": faq_user.displayname,
+#     "bio": faq_user.bio,
+#     "preferred_systems": faq_user.preferred_systems,
+#     "email": faq_user.email
+#     }
+#     form = GamefaqUserForm(initial=data)
+#     return render(request, "basic.html", {"form": form})
