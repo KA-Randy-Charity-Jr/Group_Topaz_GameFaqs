@@ -1,4 +1,4 @@
-#!/mnt/c/users/rakec/codepractice/group-topaz-gamefaqs/.venv/bin/python
+#!/mnt/c/Users/rakec/codepractice/group-topaz-gamefaqs/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

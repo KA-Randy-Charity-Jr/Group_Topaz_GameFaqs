@@ -38,7 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home'
+    'authentication',
+    'user_faq',
+    'console_app',
+    'game_app',
+    'gamefaq_app',
+    'news_app',
+    'gamefaqs'
+
 ]
 
 MIDDLEWARE = [
@@ -121,5 +128,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'gallery')
 MEDIA_URL = '/gallery/'
+
+LOGIN_URL = '/login_view/'
+
+AUTH_USER_MODEL = "user_faq.GamefaqUser"
+

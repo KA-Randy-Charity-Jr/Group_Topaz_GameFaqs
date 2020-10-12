@@ -1,0 +1,10 @@
+{% include "bootstrap.html" %} {% include "navbar.html" %}
+
+
+    {% for product in all_search_results %}
+        <h3>{{product.title}}</h3>
+        <p>{{product.genre}}</p>
+        <img src="{{ product.image.url }}">
+    {% empty %}
+        <h2>No results found</h2>
+    {% endfor %}

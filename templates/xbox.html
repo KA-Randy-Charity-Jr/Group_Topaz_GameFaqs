@@ -1,0 +1,8 @@
+{% include "bootstrap.html" %}{% include "navbar.html" %}
+<h1>xbox</h1>
+<h5>consoles:</h5>
+<ul>
+  {% for console in consoles %}
+  <li><a href="/console/{{console.id}}">{{console.name}}</a></li>
+  {% endfor %}
+</ul>

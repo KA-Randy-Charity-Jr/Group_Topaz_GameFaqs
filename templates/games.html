@@ -1,0 +1,31 @@
+{% include "bootstrap.html" %} {% include "navbar.html" %}
+
+<div class="card" style="width: 25rem">
+  <div class="card-body">
+    <h1 class="card-title">{{g.title}}</h1>
+    <h5 class="card-title">Genre:{{g.genre}}</h5>
+    <h5 class="card-title">Release Date:{{g.date_realesed}}</h5>
+    <img width="250" height="250" src="{{ g.image.url }}">
+    <h5>Consoles:</h5>
+    {% for console in c %}
+    <li><a href="/console/{{console.id}}">{{console.name}}</a></li>
+    {% endfor %}
+    <p class="card-text"></p>
+  </div>
+  <ul>
+    <h5 class="card-title">Gamefaqs</h5>
+    {% for e in f %}
+
+    <li>
+      <a href="/gamefaq/{{e.id}}">{{e.title}}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <ul>
+    <h5 class="card-title">News:</h5>
+    {% for e in n %}
+    <a href="/newspost/{{e.id}}/">{{e.title}} by {{e.author}}</a>
+
+    {% endfor %}
+  </ul>
+</div>
