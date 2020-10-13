@@ -13,8 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+
 from django.contrib import admin
 from django.urls import path
+from . import settings
+from django.contrib.staticfiles.urls import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 
 from user_faq import views
 from authentication.views import login_view, logout_view
@@ -46,3 +52,8 @@ urlpatterns = [
     path('<int:faqid>/reviews/', reviewsviews.ReviewsView, name="reviews"),
     path('newreview/<int:faqid>/',reviewsviews.CreateReview.as_view(),name="reviewform")
 ]
+
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

@@ -3,7 +3,9 @@
 <div class="card" style="width: 25rem">
   <div class="card-body">
     <h1 class="card-title">{{g.title}}</h1>
-    <h5 class="card-title">genre:{{g.genre}}</h5>
+    <h5 class="card-title">Genre:{{g.genre}}</h5>
+    <h5 class="card-title">Release Date:{{g.date_realesed}}</h5>
+    <img width="250" height="250" src="{{ g.image.url }}">
     <h5>Consoles:</h5>
     {% for console in c %}
     <li><a href="/console/{{console.id}}">{{console.name}}</a></li>

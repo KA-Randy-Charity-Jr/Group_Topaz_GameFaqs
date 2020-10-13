@@ -12,5 +12,7 @@ class Game(models.Model):
     )
    
     consoles = models.ManyToManyField(Console, symmetrical=False, blank=True, related_name="console_game")
+    date_realesed = models.DateField()
+    image = models.ImageField(upload_to="gallery")
     def __str__(self):
         return self.title 
