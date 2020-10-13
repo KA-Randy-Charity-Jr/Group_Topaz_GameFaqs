@@ -15,8 +15,11 @@
   {{ profile.email }}
   <br />
   <h3>Authored Game FAQs</h3>
-  {% for f in f % }
   <ul>
-    <li><a href="/gamefaq/{{ gamefaq.id }}/">{{ f.title }}</a></li>
+    {% for e in f %}
+
+    <li><a href="/gamefaq/{{ e.id }}/">{{ e.title }}</a></li>
+
+    {% endfor %}
   </ul>
 </div>

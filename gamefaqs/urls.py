@@ -22,7 +22,7 @@ from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
-from user_faq import views
+from user_faq import views as userviews
 from authentication.views import login_view, logout_view
 from gamefaq_app import views as gamefaqviews
 from console_app import views as consoleviews
@@ -31,11 +31,11 @@ from news_app import views as newsviews
 from reviews_app import views as reviewsviews
 
 urlpatterns = [
-    path('', views.index, name='home'),
-    path('user_profile_view/<int:user_id>/edit/',views.edit_user_profile_view.as_view()),
-    path('user_profile_view/<int:user_id>/', views.user_profile_view, name='user_profile'),
+    path('', gamefaqviews.indexview, name='home'),
+    path('user_profile_view/<int:user_id>/edit/',userviews.edit_user_profile_view.as_view()),
+    path('user_profile_view/<int:user_id>/', userviews.user_profile_view, name='user_profile'),
     path('login_view/', login_view, name='login'),
-    path('signup_view/', views.signup_view.as_view()),
+    path('signup_view/', userviews.signup_view.as_view()),
     path('logout_view/', logout_view, name='logout'),
     path('admin/', admin.site.urls),
     path('gamefaq/<int:gamefaqid>/',gamefaqviews.gamefaqview,name="gamefaq"),

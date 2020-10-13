@@ -13,28 +13,25 @@
   <br />
   <br />
 
-  <span>
-    <h3>Recent Games List</h3>
-    <div class="card" style="width: 18rem">
-      <ul class="list-group list-group-flush">
-        {% for e in f %}
-        <li class="list-group-item bg-danger">
-          <a href="/game/{{e.id}}">{{e.title}}</a>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </span>
-  <span>
-    <h3>Recent News</h3>
-    <div class="card" style="width: 18rem">
-      <ul class="list-group list-group-flush">
-        {% for e in n %}
-        <li class="list-group-item bg-danger">
-          <a href="/newspost/{{e.id}}">{{e.title}}</a>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </span>
+  <h3>Recent Games List</h3>
+  <div class="card" style="width: 18rem">
+    <ul class="list-group list-group-flush">
+      {% for e in f %}
+      <li class="list-group-item bg-danger">
+        <a href="/game/{{e.id}}">{{e.title}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <h3>Recent News</h3>
+  <div class="card" style="width: 18rem">
+    <ul class="list-group list-group-flush">
+      {% for e in n %}
+      <li class="list-group-item bg-danger">
+        <a href="/newspost/{{e.id}}">{{e.title}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
 </div>
