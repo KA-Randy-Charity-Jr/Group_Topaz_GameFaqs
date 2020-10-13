@@ -35,8 +35,9 @@
       </li>
       {% endif %}
       <li>
-        <form class="form-inline">
+        <form class="form-inline" action="{% url 'search_results' %}" method="get">
           <input
+            name="q"
             class="form-control mr-sm-2"
             type="search"
             placeholder="Search"
@@ -47,13 +48,18 @@
           </button>
         </form>
       </li>
+<<<<<<< HEAD
  {% if request.user.is_authenticated != True %}
+=======
+      {% if request.user.is_authenticated != True %}
+>>>>>>> 9672d207c0074cff1790109d589f1b534de7e289
       <li class="nav-item">
         <a class="nav-link" href="/login_view">login</a>
       </li>
   
       <li class="nav-item">
         <a class="nav-link" href="/signup_view">signup</a>
+<<<<<<< HEAD
       </li>
       {% endif %}
       {% if request.user.is_authenticated %}
@@ -64,6 +70,15 @@
         <a class="nav-link" href="/user_profile_view/{{request.user.id}}/">View Profile</a>
       </li>
       {% endif %}
+=======
+      </li>
+      {% endif %}
+      {% if request.user.is_authenticated %}
+          <li class="nav-item">
+        <a class="nav-link" href="/logout_view">logout</a>
+      </li>
+      {% endif %}
+>>>>>>> 9672d207c0074cff1790109d589f1b534de7e289
     </ul>
   </div>
 </nav>

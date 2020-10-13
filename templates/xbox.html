@@ -1,8 +1,17 @@
 {% include "bootstrap.html" %}{% include "navbar.html" %}
-<h1>xbox</h1>
+<div class="jumbotron bg-success">
+  <h1 class="display-4">XBOX CONSOLES</h1>
+  <p class="lead"></p>
+  <hr class="my-4" />
+  <p>MASTER CHIEF WELCOMES YOU</p>
+</div>
 <h5>consoles:</h5>
-<ul>
-  {% for console in consoles %}
-  <li><a href="/console/{{console.id}}">{{console.name}}</a></li>
-  {% endfor %}
-</ul>
+<div class="card" style="width: 18rem">
+  <ul class="list-group list-group-flush">
+    {% for console in consoles %}
+    <li class="list-group-item">
+      <a href="/console/{{console.id}}">{{console.name}}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
