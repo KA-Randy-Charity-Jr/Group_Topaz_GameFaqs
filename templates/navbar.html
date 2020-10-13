@@ -25,6 +25,7 @@
       <li class="nav-item">
         <a class="nav-link" href="/pc">PC</a>
       </li>
+      {% if request.user.is_authenticated %}
       <li class="nav-item">
         <a class="nav-link" href="/newgamefaq">Write a gamefaq!</a>
       </li>
@@ -32,18 +33,38 @@
       <li class="nav-item">
         <a class="nav-link" href="/postnews">Post a News Story!</a>
       </li>
+      {% endif %}
       <li>
-        {% include "search.html" %}
+        <form class="form-inline" action="{% url 'search_results' %}" method="get">
+          <input
+            name="q"
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
       </li>
+ {% if request.user.is_authenticated != True %}
       <li class="nav-item">
         <a class="nav-link" href="/login_view">login</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/logout_view">logout</a>
-      </li>
+  
       <li class="nav-item">
         <a class="nav-link" href="/signup_view">signup</a>
       </li>
+      {% endif %}
+      {% if request.user.is_authenticated %}
+          <li class="nav-item">
+        <a class="nav-link" href="/logout_view">logout</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="/user_profile_view/{{request.user.id}}/">View Profile</a>
+      </li>
+      {% endif %}
     </ul>
   </div>
 </nav>

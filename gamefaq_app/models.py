@@ -8,11 +8,11 @@ from django.utils import timezone
 class GameFaq(models.Model):
     difficulties= [('EASY','EASY'),('INTERMEDIATE','INTERMEDIATE'),('HARD','HARD')]
     title = models.CharField(max_length=300)
-    game = models.OneToOneField(Game, on_delete=models.CASCADE, related_name="faq_game",default=True)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name="faq_game",default=True)
     body = models.TextField()
     difficulty = models.CharField(max_length=85, choices=difficulties)
     consoles = models.ManyToManyField(Console, symmetrical=False, blank=True, related_name="console_gamefaq")
-    author = models.OneToOneField(GamefaqUser, on_delete=models.CASCADE, related_name="gamefaq_author")
+    author = models.ForeignKey(GamefaqUser, on_delete=models.CASCADE, related_name="gamefaq_author")
     postdate = models.DateTimeField(default=timezone.now)   
     def __str__(self):
         return self.title
