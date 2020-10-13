@@ -2,7 +2,6 @@ from django import forms
 from game_app.models import Game
 
 
-
 class NewGamefaq(forms.Form):
     difficulties= [('EASY','EASY'),('INTERMEDIATE','INTERMEDIATE'),('HARD','HARD')]
     title = forms.CharField(max_length=50)
