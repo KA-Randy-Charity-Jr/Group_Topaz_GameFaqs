@@ -24,11 +24,13 @@ from game_app import views as gameviews
 from news_app import views as newsviews
 
 urlpatterns = [
+    path('', views.index, name='home'),
+    path('user_profile_view/<int:user_id>/edit/',views.edit_user_profile_view.as_view()),
+    path('user_profile_view/<int:user_id>/', views.user_profile_view, name='user_profile'),
     path('login_view/', login_view, name='login'),
     path('signup_view/', views.signup_view.as_view()),
     path('logout_view/', logout_view, name='logout'),
     path('admin/', admin.site.urls),
-    path('',gamefaqviews.indexview,name="home"),
     path('gamefaq/<int:gamefaqid>/',gamefaqviews.gamefaqview,name="gamefaq"),
     path('game/<int:gameid>/',gameviews.gamesview,name="game"),
     path('newgamefaq/', gamefaqviews.newgamefaqview, name="newgamefaq"),
