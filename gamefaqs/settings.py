@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'console_app',
     'game_app',
     'gamefaq_app',
-    'news_app'
+    'news_app',
+    'reviews_app'
 
 ]
 
