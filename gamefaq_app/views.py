@@ -5,7 +5,7 @@ from django.shortcuts import render, HttpResponseRedirect, reverse, HttpResponse
 from game_app.models import Game
 from django.views.generic import TemplateView, ListView
 from django.db.models import Q 
-
+from news_app.models import Newspost
 
 # Create your views here.
 def gamefaqview(request,gamefaqid):
@@ -15,7 +15,8 @@ def gamefaqview(request,gamefaqid):
 
 def indexview(request):
     f = Game.objects.all()
-    return render(request, "index.html", {"f": f})
+    n = Newspost.objects.all()
+    return render(request, "index.html", {"f": f,"n":n})
 
 def newgamefaqview(request):
     f = NewGamefaq()
