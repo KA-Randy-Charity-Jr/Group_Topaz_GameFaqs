@@ -1,0 +1,14 @@
+{% include "bootstrap.html" %} {% include "navbar.html" %}
+<h1>
+  Reviews for </h1> <br />
+  <br />{% for review in reviews %} {% if review.isreccomend %}
+  <p>Recommendation!</p>
+  {% else %}
+  <p>Does not Recommend.</p>
+  {% endif %}
+  <p>{{review.body}}</p>
+  <p>{{review.author}}</p>
+  <br />
+  <br />
+  {% endfor %}
+</h1>

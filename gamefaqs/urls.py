@@ -22,6 +22,7 @@ from gamefaq_app import views as gamefaqviews
 from console_app import views as consoleviews
 from game_app import views as gameviews
 from news_app import views as newsviews
+from reviews_app import views as reviewsviews
 
 urlpatterns = [
     path('login_view/', login_view, name='login'),
@@ -40,4 +41,6 @@ urlpatterns = [
     path("postnews/", newsviews.Newspostform.as_view(), name="newpost"),
     path('newspost/<int:newsid>/', newsviews.NewpostView, name="newspostview"),
     path('search/', gamefaqviews.SearchResultsView.as_view(), name='search_results'),
+    path('<int:faqid>/reviews/', reviewsviews.ReviewsView, name="reviews"),
+    path('newreview/<int:faqid>/',reviewsviews.CreateReview.as_view(),name="reviewform")
 ]
