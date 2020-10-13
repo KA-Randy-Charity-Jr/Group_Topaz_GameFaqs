@@ -2,8 +2,9 @@ from django.shortcuts import render
 from gamefaq_app.models import GameFaq
 from gamefaq_app.forms import NewGamefaq
 from django.shortcuts import render, HttpResponseRedirect, reverse, HttpResponse
-from game_app.models import Game
-from console_app.models import Console
+from django.views.generic import TemplateView, ListView
+from django.db.models import Q 
+from news_app.models import Newspost
 
 
 # Create your views here.
@@ -13,7 +14,8 @@ def gamefaqview(request,gamefaqid):
 
 def indexview(request):
     f = Game.objects.all()
-    return render(request, "index.html", {"f": f})
+    n = Newspost.objects.all()
+    return render(request, "index.html", {"f": f,"n":n})
 
 def newgamefaqview(request):
     f = NewGamefaq()
@@ -27,4 +29,18 @@ def newgamefaqview(request):
                 body=data.get('body'),
                 difficulty=data.get('difficulty'),author=(request.user))
             return HttpResponseRedirect(reverse('home'))    
-    return render (request,"form.html",{"f":f})    
+    return render(request, "form.html", {"f": f})
+
+
+
+class SearchResultsView(ListView):
+    model = GameFaq
+    template_name = 'search_results.html'
+    def get_queryset(self): # new
+        query = self.request.GET.get('q')
+        object_list = GameFaq.objects.filter(
+            Q(title__icontains=query) | Q(body__icontains=query)
+        )
+        return object_list
+
+

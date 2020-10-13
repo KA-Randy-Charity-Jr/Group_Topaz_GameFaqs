@@ -1,5 +1,6 @@
 from django import forms
 from game_app.models import Game
+from console_app.models import Console
 
 
 class NewGamefaq(forms.Form):
@@ -7,4 +8,5 @@ class NewGamefaq(forms.Form):
     title = forms.CharField(max_length=50)
     game = forms.ModelChoiceField(queryset=Game.objects.all(),required=False)
     body = forms.CharField(widget=forms.Textarea)
+    console=forms.ModelChoiceField(queryset=Console.objects.all())
     difficulty = forms.ChoiceField( choices=difficulties, required=False)

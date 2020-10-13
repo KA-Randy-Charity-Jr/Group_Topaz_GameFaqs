@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'game_app',
     'gamefaq_app',
     'news_app',
-    'gamefaqs'
+    'gamefaqs',
+    'reviews_app'
 
 ]
 

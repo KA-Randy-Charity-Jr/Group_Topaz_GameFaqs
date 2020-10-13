@@ -1,19 +1,40 @@
+{% include "bootstrap.html" %} {% include "navbar.html"%}
+<div class="bg-danger">
+  <div class="jumbotron bg-dark text-light">
+    <h1 class="display-4">WELCOME TO TOPAZ GAMEFAQS</h1>
+    {% if request.user.is_authenticated %}
+    <p>Welcome, {{request.user.username}}</p>
+    {% endif %}
+    <p class="lead"></p>
+    <hr class="my-4" />
+    <p>The Place For the best Game-Faqs, Cheatcodes and Game News!</p>
+  </div>
+  <br />
+  <br />
+  <br />
 
-{% include "bootstrap.html" %} {% include "navbar.html"%} <div
-sytle="background-image:url("/download.jpg")">
-<h1>WELCOME TO TOPAZ GAMEFAQS</h1>
-<h2>Welcome, {{ request.user.username }}</h2>
-
-<br />
-<br />
-<br />
-<h3>Games List</h3>
-<ul>
-  {% for e in f %}
-  <li>
-    <a href="/game/{{e.id}}">{{e.title}}</a>
-  </li>
-  {% endfor %}
-</ul>
+  <span>
+    <h3>Recent Games List</h3>
+    <div class="card" style="width: 18rem">
+      <ul class="list-group list-group-flush">
+        {% for e in f %}
+        <li class="list-group-item bg-danger">
+          <a href="/game/{{e.id}}">{{e.title}}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </span>
+  <span>
+    <h3>Recent News</h3>
+    <div class="card" style="width: 18rem">
+      <ul class="list-group list-group-flush">
+        {% for e in n %}
+        <li class="list-group-item bg-danger">
+          <a href="/newspost/{{e.id}}">{{e.title}}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </span>
 </div>
-
