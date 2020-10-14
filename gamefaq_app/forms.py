@@ -10,4 +10,5 @@ class NewGamefaq(forms.Form):
     game = forms.ModelChoiceField(queryset=Game.objects.all(),required=False)
     body = forms.CharField(widget=forms.Textarea)
     console=forms.ModelChoiceField(queryset=Console.objects.all())
-    difficulty = forms.ChoiceField( choices=difficulties, required=False)
+    difficulty = forms.ChoiceField(choices=difficulties, required=False)
+    ptype= forms.ChoiceField(choices=[('CHEATCODES','CHEATCODES'),('GAMEFAQ','GAMEFAQ')])

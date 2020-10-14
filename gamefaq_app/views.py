@@ -6,16 +6,19 @@ from game_app.models import Game
 from django.views.generic import TemplateView, ListView
 from django.db.models import Q 
 from news_app.models import Newspost
+from reviews_app.models import Review
 
 # Create your views here.
 def gamefaqview(request,gamefaqid):
-    f= GameFaq.objects.filter(id=gamefaqid)
-    return render(request, "gamefaq.html", {"f": f})
+    f = GameFaq.objects.filter(id=gamefaqid)
+    c = Review.objects.filter(gamefaq=gamefaqid)
+    r = c.count()
+    return render(request, "gamefaq.html", {"f": f,"r":r})
     
 
 def indexview(request):
-    f = Game.objects.all()
-    n = Newspost.objects.all()
+    f = Game.objects.all().order_by("-id")
+    n = Newspost.objects.all().order_by("-id")
     return render(request, "index.html", {"f": f,"n":n})
 
 def newgamefaqview(request):
@@ -28,7 +31,8 @@ def newgamefaqview(request):
                 title=data.get('title'),
                 game=data.get('game'),
                 body=data.get('body'),
-                difficulty=data.get('difficulty'),author=(request.user))
+                difficulty=data.get('difficulty'), author=(request.user),
+                ptype=data.get('ptype'))
             return HttpResponseRedirect(reverse('home'))    
     return render(request, "form.html", {"f": f})
 

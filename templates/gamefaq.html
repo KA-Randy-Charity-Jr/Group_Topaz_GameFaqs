@@ -1,19 +1,18 @@
-{% include "bootstrap.html" %} {% include "navbar.html" %} {% for e in f %}
-<a href="/{{e.id}}/reviews/">View Reviews of this gamefaq </a>
+{% include "bootstrap.html" %} {% include "navbar.html" %}{% for e in f %}
+<p>this post has {{r}} review(s)</p>
+<a href="/{{e.id}}/reviews/">View Reviews of this gamefaq / cheat code</a>
 <br />
 <br />
-<a href="/newreview/{{e.id}}/">Write review for this gamefaq</a>
+<a href="/newreview/{{e.id}}/">Write review for this gamefaq / cheatcode</a>
+<br />
+<br />
+<p>
+  written by:<a href="/user_profile_view/{{e.author.id}}"/ >{{e.author.username}}</a>
+</p>
+<br />
+<br />
 <pre>
 {{e.body}}
 </pre>
 
 {% endfor %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body></body>
-</html>
