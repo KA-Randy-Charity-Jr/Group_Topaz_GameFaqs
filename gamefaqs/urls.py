@@ -16,13 +16,14 @@ Including another URLconf
 
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from . import settings
+from django.views.static import serve
 from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
-from user_faq import views
+from user_faq import views as userviews
 from authentication.views import login_view, logout_view
 from gamefaq_app import views as gamefaqviews
 from console_app import views as consoleviews
@@ -31,11 +32,11 @@ from news_app import views as newsviews
 from reviews_app import views as reviewsviews
 
 urlpatterns = [
-    path('', views.index, name='home'),
-    path('user_profile_view/<int:user_id>/edit/',views.edit_user_profile_view.as_view()),
-    path('user_profile_view/<int:user_id>/', views.user_profile_view, name='user_profile'),
+    path('', gamefaqviews.indexview, name='home'),
+    path('user_profile_view/<int:user_id>/edit/',userviews.edit_user_profile_view.as_view()),
+    path('user_profile_view/<int:user_id>/', userviews.user_profile_view, name='user_profile'),
     path('login_view/', login_view, name='login'),
-    path('signup_view/', views.signup_view.as_view()),
+    path('signup_view/', userviews.signup_view.as_view()),
     path('logout_view/', logout_view, name='logout'),
     path('admin/', admin.site.urls),
     path('gamefaq/<int:gamefaqid>/',gamefaqviews.gamefaqview,name="gamefaq"),
@@ -53,7 +54,13 @@ urlpatterns = [
     path('newreview/<int:faqid>/',reviewsviews.CreateReview.as_view(),name="reviewform")
 ]
 
+handler404 = 'gamefaq_app.views.handler404'
+handler500 = 'gamefaq_app.views.handler500'
 
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += [re_path(r'^gallery/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT,}),]
+
 

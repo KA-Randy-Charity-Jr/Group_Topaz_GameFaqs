@@ -1,10 +1,12 @@
 from django.shortcuts import render
+from django.template import RequestContext
 from gamefaq_app.models import GameFaq
 from gamefaq_app.forms import NewGamefaq
 from django.shortcuts import render, HttpResponseRedirect, reverse, HttpResponse
 from django.views.generic import TemplateView, ListView
 from django.db.models import Q 
 from news_app.models import Newspost
+from game_app.models import Game
 
 
 # Create your views here.
@@ -32,14 +34,19 @@ def newgamefaqview(request):
     return render(request, "form.html", {"f": f})
 
 
+def handler404(request, *args, **argv):
+    return render(request, '404.html', status=404)
+
+def handler500(request, *args, **argv):
+    return render(request, '500.html', status=500)
 
 class SearchResultsView(ListView):
-    model = GameFaq
+    model = Game
     template_name = 'search_results.html'
     def get_queryset(self): # new
         query = self.request.GET.get('q')
-        object_list = GameFaq.objects.filter(
-            Q(title__icontains=query) | Q(body__icontains=query)
+        object_list = Game.objects.filter(
+            Q(title__icontains=query) 
         )
         return object_list
 

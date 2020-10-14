@@ -6,6 +6,7 @@ from user_faq.forms import GamefaqUserForm
 from authentication.views import login_view
 from user_faq.models import GamefaqUser
 from user_faq.forms import SignupForm
+from gamefaq_app.models import GameFaq
 
 # Create your views here.
 
@@ -35,7 +36,8 @@ class signup_view(TemplateView):
 def user_profile_view(request, user_id):
     html = 'user_profile.html'
     user_detail = GamefaqUser.objects.filter(id=user_id).first()
-    return render(request, html, {'profile':user_detail})
+    f = GameFaq.objects.filter(author=user_id)
+    return render(request, html, {'profile':user_detail,"f":f})
 
 
 class edit_user_profile_view(TemplateView):

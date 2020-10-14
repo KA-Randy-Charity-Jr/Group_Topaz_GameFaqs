@@ -1,11 +1,20 @@
-<form method="POST" action="">
-    {% csrf_token %}
-    {{ form.username.label }}
-    {{ form.username }}
-<br>
-    {{ form.password.label }}
-    {{ form.password }}
-<br>
-    <input type="submit" value="Login">
+{% include "bootstrap.html" %}{% include "navbar.html" %}
+<style>
+  #germ{
+      text-align: center;
+      
+  }
+  body{
+    background-color: rgb(246, 10, 235);
+  }
+</style>
+<div id='germ'>
+<form method="POST"  action="">
+  {% csrf_token %} {{ form.username.label }} {{ form.username }}
+  <br />
+  {{ form.password.label }} {{ form.password }}
+  <br />
+  <input type="submit" value="Login" />
 </form>
-    <a href="/signup_view/"><button>Sign Up!!</button></a>
+<a href="/signup_view/"><button>Sign Up!!</button></a>
+</div>

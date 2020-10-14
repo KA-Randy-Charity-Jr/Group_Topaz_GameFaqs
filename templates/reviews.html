@@ -1,7 +1,7 @@
 {% include "bootstrap.html" %} {% include "navbar.html" %}
 <h3>
-  Reviews for faq:<br />" {{faq.title}} "<br />
-  for {{faq.game}}, on {% for console in c %}{{console.name}} {% endfor %}
+  Reviews for faq:<br />"{{faq.title}}"<br />
+  Game: {{faq.game}}, on {% for console in c %}{{console.name}} {% endfor %}
 </h3>
 <br />
 <br />
