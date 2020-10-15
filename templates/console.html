@@ -1,7 +1,13 @@
 {% include "bootstrap.html" %}{% include "navbar.html" %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">{{console.brand}}</h1>
+    <h4 class="display-4">{{console.name}}</h4>
 
-<h1>{{console.name}}</h1>
-<h3>{{console.brand}}</h3>
+    <p class="lead">a list of games</p>
+  </div>
+</div>
+
 <h3>games:</h3>
 <ul>
   {% for game in games %}

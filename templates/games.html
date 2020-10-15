@@ -1,4 +1,13 @@
 {% include "bootstrap.html" %} {% include "navbar.html" %}
+<style>
+  #cheatcodes{
+   float:left;
+  }
+
+  
+  
+</style>
+
 <div class=".container-fluid bg-danger">
   <div class="card .container-fluid" style="width: 25rem">
     <div class="card-body">
@@ -13,7 +22,7 @@
       <p class="card-text"></p>
     </div>
   </div>
-  <div class="card .container-fluid" style="width: 18rem">
+  <div class="card .container-fluid" style="width: 18rem" id="gamefaq">
     <h5 class="card-title">GameFaqs</h5>
     <ul class="list-group list-group-flush">
       {% for e in f %} {% if e.ptype == 'GAMEFAQ' %}
@@ -24,7 +33,7 @@
     </ul>
   </div>
 
-  <div class="card .container-fluid" style="width: 18rem">
+  <div class="card .container-fluid" style="width: 18rem" id="cheatcodes">
     <h5 class="card-title">Cheat Codes</h5>
     <ul class="list-group list-group-flush">
       {% for e in f %} {% if e.ptype == 'CHEATCODES' %}
@@ -35,7 +44,7 @@
     </ul>
   </div>
 
-  <div class="card" style="width: 18rem">
+  <div class="card" style="width: 18rem" id="news">
     <h5 class="card-title">News:</h5>
     <ul class="list-group list-group-flush">
       {% for e in n %}
@@ -43,4 +52,4 @@
       {% endfor %}
     </ul>
   </div>
-</div>
+

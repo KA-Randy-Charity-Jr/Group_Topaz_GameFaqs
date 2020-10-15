@@ -33,7 +33,7 @@ def newgamefaqview(request):
                 game=data.get('game'),
                 body=data.get('body'),
                 difficulty=data.get('difficulty'), author=(request.user),
-                ptype=data.get('ptype'))
+                ptype=data.get('ptype'),consoles=data.get('console')),
             return HttpResponseRedirect(reverse('home'))    
     return render(request, "form.html", {"f": f})
 
