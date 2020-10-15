@@ -18,7 +18,8 @@ class CreateReview(TemplateView):
     def get(self, request,faqid):
         f = ReviewForm()
         return render(request,"form.html",{"f":f})
-    def post(self, request,faqid):
+    def post(self, request, faqid):
+        thefaq=GameFaq.objects.get(id=faqid)
         reccomend=False
         if request.method == "POST":
             form = ReviewForm(request.POST)
@@ -26,6 +27,10 @@ class CreateReview(TemplateView):
                 data = form.cleaned_data
                 if data.get('isreccomend') == 'YES':
                     reccomend = True
+                    thefaq.upvotes += 1
+                else:
+                    thefaq.downvotes -= 1
+                thefaq.save()    
                 Review.objects.create(
                     body=data.get('body'),
                     author=request.user,

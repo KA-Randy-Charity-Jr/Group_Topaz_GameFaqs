@@ -14,7 +14,12 @@ class GameFaq(models.Model):
     consoles = models.ForeignKey(Console,on_delete=models.CASCADE, blank=True, related_name="console_gamefaq", null=True)
     author = models.ForeignKey(GamefaqUser, on_delete=models.CASCADE, related_name="gamefaq_author")
     postdate = models.DateTimeField(default=timezone.now),
-    ptype = models.CharField(max_length=25, choices=[('CHEATCODES','CHEATCODES'),('GAMEFAQ','GAMEFAQ')],default='GAMEFAQ')
+    ptype = models.CharField(max_length=25, choices=[('CHEATCODES', 'CHEATCODES'), ('GAMEFAQ', 'GAMEFAQ')], default='GAMEFAQ')
+    upvotes = models.IntegerField(default=0)
+    downvotes = models.IntegerField(default=0)
+    
+    def added(self):
+        return self.upvotes + self.downvotes
     def __str__(self):
         return self.title
     

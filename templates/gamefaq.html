@@ -5,6 +5,13 @@
   }
 </style>
 <p>this gamefaq has {{r}} reviews</p>
+{% if e.added > 1 %}
+<p>reviews on this gamefaq are mostly positive</p>
+{% elif e.added == 0 %}
+<p>reviews on this gamefaq are mostly neutral</p>
+{% elif e.added < 0%}
+<p>reviews on this gamefaq are mostly negative</p>
+{% endif %}
 <a href="/{{e.id}}/reviews/">View Reviews of this gamefaq </a>
 
 <br />
