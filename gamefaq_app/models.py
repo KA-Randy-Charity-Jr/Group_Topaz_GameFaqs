@@ -11,9 +11,10 @@ class GameFaq(models.Model):
     game = models.ForeignKey(Game,  on_delete=models.CASCADE, related_name="faq_game")
     body = models.TextField()
     difficulty = models.CharField(max_length=85, choices=difficulties)
-    consoles = models.ManyToManyField(Console, symmetrical=False, blank=True, related_name="console_gamefaq")
+    consoles = models.ForeignKey(Console,on_delete=models.CASCADE, blank=True, related_name="console_gamefaq", null=True)
     author = models.ForeignKey(GamefaqUser, on_delete=models.CASCADE, related_name="gamefaq_author")
-    postdate = models.DateTimeField(default=timezone.now)   
+    postdate = models.DateTimeField(default=timezone.now),
+    ptype = models.CharField(max_length=25, choices=[('CHEATCODES','CHEATCODES'),('GAMEFAQ','GAMEFAQ')],default='GAMEFAQ')
     def __str__(self):
         return self.title
     

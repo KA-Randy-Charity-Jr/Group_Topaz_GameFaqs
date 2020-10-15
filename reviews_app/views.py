@@ -10,8 +10,8 @@ from django.shortcuts import render, HttpResponseRedirect, reverse, HttpResponse
 def ReviewsView(request, faqid):
     reviews = Review.objects.filter(gamefaq=faqid)
     faq = GameFaq.objects.get(id=faqid)
-    c = faq.consoles.all()
-    return render(request, "reviews.html", {"reviews": reviews,'faq':faq,"c":c})
+
+    return render(request, "reviews.html", {"reviews": reviews,'faq':faq})
     
 
 class CreateReview(TemplateView):
