@@ -1,3 +1,21 @@
+
+  <style>
+    #xbox{
+      color: lawngreen;
+    }
+    #play{
+      color: cornflowerblue;
+    }
+    #nin{
+      color: salmon;
+    }
+    #pc{
+      color: lightslategrey;
+    }
+  </style>
+
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="/">TOPAZ</a>
   <button
@@ -12,18 +30,19 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
+
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/xbox">XBOX</a>
+      <li class="nav-item" >
+        <a class="nav-link" id='xbox' href="/xbox">XBOX</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/playstation">PLAYSTATION</a>
+        <a class="nav-link" id='play' href="/playstation">PLAYSTATION</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/nintendo">NINTENDO</a>
+        <a class="nav-link" id='nin' href="/nintendo">NINTENDO</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/pc">PC</a>
+        <a class="nav-link" id='pc' href="/pc">PC</a>
       </li>
       {% if request.user.is_authenticated %}
       <li class="nav-item">

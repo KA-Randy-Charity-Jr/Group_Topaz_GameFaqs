@@ -16,8 +16,9 @@ Including another URLconf
 
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from . import settings
+from django.views.static import serve
 from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
@@ -53,7 +54,13 @@ urlpatterns = [
     path('newreview/<int:faqid>/',reviewsviews.CreateReview.as_view(),name="reviewform")
 ]
 
+handler404 = 'gamefaq_app.views.handler404'
+handler500 = 'gamefaq_app.views.handler500'
 
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += [re_path(r'^gallery/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT,}),]
+
 

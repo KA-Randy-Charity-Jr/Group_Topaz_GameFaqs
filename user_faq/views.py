@@ -36,7 +36,7 @@ class signup_view(TemplateView):
 def user_profile_view(request, user_id):
     html = 'user_profile.html'
     user_detail = GamefaqUser.objects.filter(id=user_id).first()
-    f= GameFaq.objects.all()
+    f = GameFaq.objects.filter(author=user_id)
     return render(request, html, {'profile':user_detail,"f":f})
 
 

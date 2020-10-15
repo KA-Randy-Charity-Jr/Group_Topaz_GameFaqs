@@ -1,6 +1,15 @@
 {% include "bootstrap.html" %}{% include "navbar.html" %}
-
-<form method="POST" action="">
+<style>
+  #germ{
+      text-align: center;
+      
+  }
+  body{
+    background-color: rgb(246, 10, 235);
+  }
+</style>
+<div id='germ'>
+<form method="POST"  action="">
   {% csrf_token %} {{ form.username.label }} {{ form.username }}
   <br />
   {{ form.password.label }} {{ form.password }}
@@ -8,3 +17,4 @@
   <input type="submit" value="Login" />
 </form>
 <a href="/signup_view/"><button>Sign Up!!</button></a>
+</div>

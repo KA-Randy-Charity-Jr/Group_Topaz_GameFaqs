@@ -1,9 +1,21 @@
 {% include "bootstrap.html" %} {% include "navbar.html"%}
+<style>
+  body{
+    background-color: black;
+  }
+
+  #game{
+    color: black;
+  }
+  #news{
+    color: black;
+  }
+</style>
 <div class="bg-danger">
   <div class="jumbotron bg-dark text-light">
     <h1 class="display-4">WELCOME TO TOPAZ GAMEFAQS</h1>
     {% if request.user.is_authenticated %}
-    <p>Welcome, {{request.user.username}}</p>
+    <h2>Welcome, {{request.user.username}}</h2>
     {% endif %}
     <p class="lead"></p>
     <hr class="my-4" />
@@ -18,7 +30,7 @@
     <ul class="list-group list-group-flush">
       {% for e in f %}
       <li class="list-group-item bg-danger">
-        <a href="/game/{{e.id}}">{{e.title}}</a>
+        <a id='game' href="/game/{{e.id}}">{{e.title}}</a>
       </li>
       {% endfor %}
     </ul>
@@ -29,7 +41,7 @@
     <ul class="list-group list-group-flush">
       {% for e in n %}
       <li class="list-group-item bg-danger">
-        <a href="/newspost/{{e.id}}">{{e.title}}</a>
+        <a id='news' href="/newspost/{{e.id}}">{{e.title}}</a>
       </li>
       {% endfor %}
     </ul>
