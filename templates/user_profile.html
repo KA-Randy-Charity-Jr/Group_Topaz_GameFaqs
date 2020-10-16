@@ -2,7 +2,9 @@
 <h1>the user you're looking for isn't here at the moment</h1>
 {% else %}
 <h1>User Profile Page</h1>
+{% if request.user.username == profile.username %}
 <a href="/user_profile_view/{{request.user.id}}/edit/">Edit Profile</a>
+{% endif %}
 <br />
 <h2>Welcome, {{ profile.displayname }}!</h2>
 <div class="card" style="width: 18rem">
