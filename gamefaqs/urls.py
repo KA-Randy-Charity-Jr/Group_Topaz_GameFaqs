@@ -41,7 +41,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('gamefaq/<int:gamefaqid>/',gamefaqviews.gamefaqview,name="gamefaq"),
     path('game/<int:gameid>/',gameviews.gamesview,name="game"),
-    path('newgamefaq/', gamefaqviews.newgamefaqview, name="newgamefaq"),
+    path('newgamefaq/<int:gameid>/', gamefaqviews.newgamefaqview, name="newgamefaq"),
     path('playstation/', consoleviews.PlaystationView, name="playstation"),
     path('xbox/', consoleviews.XboxView, name="xbox"),
     path('nintendo/', consoleviews.NintendoView, name="nintendo"),
@@ -50,6 +50,7 @@ urlpatterns = [
     path("postnews/", newsviews.Newspostform.as_view(), name="newpost"),
     path('newspost/<int:newsid>/', newsviews.NewpostView, name="newspostview"),
     path('search/', gamefaqviews.SearchResultsView.as_view(), name='search_results'),
+    path('faqsearch/', gamefaqviews.FaqResultsView.as_view(), name='search_result'),
     path('<int:faqid>/reviews/', reviewsviews.ReviewsView, name="reviews"),
     path('newreview/<int:faqid>/',reviewsviews.CreateReview.as_view(),name="reviewform")
 ]

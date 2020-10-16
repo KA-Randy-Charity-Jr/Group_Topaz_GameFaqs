@@ -1,14 +1,12 @@
 {% include "bootstrap.html" %} {% include "navbar.html"%}
 <style>
-  body{
-    background-color: black;
-  }
 
-  #game{
+  #game {
     color: black;
   }
-  #news{
+  #news {
     color: black;
+ 
   }
 </style>
 <div class="bg-danger">
@@ -21,29 +19,78 @@
     <hr class="my-4" />
     <p>The Place For the best Game-Faqs, Cheatcodes and Game News!</p>
   </div>
+  
   <br />
   <br />
-  <br />
-
-  <h3>Recent Games List</h3>
-  <div class="card" style="width: 18rem">
-    <ul class="list-group list-group-flush">
-      {% for e in f %}
-      <li class="list-group-item bg-danger">
-        <a id='game' href="/game/{{e.id}}">{{e.title}}</a>
-      </li>
-      {% endfor %}
-    </ul>
+  
+  <div class="container ">
+    <h2>Games</h2>
+    <h3> search for GAMES </h2>
+      <form
+          class="form-inline"
+          action="{% url 'search_results' %}"
+          method="get"
+        >
+          <input
+            name="q"
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+        
+        
+    <h3>Recent Games List</h3>
+    <div class="card" style="width: 18rem">
+      <ul class="list-group list-group-flush">
+        {% for e in f %}
+        <li class="list-group-item bg-danger">
+          <a id="game" href="/game/{{e.id}}">{{e.title}}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
   </div>
-
+<div class="container ">
   <h3>Recent News</h3>
   <div class="card" style="width: 18rem">
     <ul class="list-group list-group-flush">
       {% for e in n %}
       <li class="list-group-item bg-danger">
-        <a id='news' href="/newspost/{{e.id}}">{{e.title}}</a>
+        <a id="news" href="/newspost/{{e.id}}">{{e.title}}</a>
       </li>
       {% endfor %}
     </ul>
   </div>
-</div>
+  </div>
+  <div class="container ">
+    <h2>GAMEFAQS</h2>
+    <h3>Search For GamegFaqs</h3>
+    <form class="form-inline" action="{% url 'search_result' %}" method="get">
+      <input
+        name="q"
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </form>
+    <h3>Recent GAMEFAQS</h3>
+    <div class="card" style="width: 18rem">
+      <ul class="list-group list-group-flush">
+        {% for e in g %}
+        <li class="list-group-item bg-danger">
+          <a id="news" href="/gamefaq/{{e.id}}">{{e.title}}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+

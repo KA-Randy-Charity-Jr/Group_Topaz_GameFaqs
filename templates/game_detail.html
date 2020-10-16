@@ -1,18 +1,18 @@
 <a href="/">Home</a>
 <div class="container">
-    {% if not post %}
-        <h1>the post you're looking for isn't here at the moment</h1>
-        {% else %}
-        <h2>{{ post.name }}</h2>
-        <img src="{{ post.image.url }}">
-        <p>Description: {{ post.description }}</p>
-        <p>GameFAQS</p>
-        <ul>
-        {% for faq in faqs %}
-            <li><a href="#">{{ faq.body }}</a></li>
-        {% endfor %}
-        </ul>
-        <p>Release Date - {{ post.date_realesed }}</p>
-        {% endif %}
-    </div>
-    
+  {% if not post %}
+  <h1>the post you're looking for isn't here at the moment</h1>
+  {% else %}
+  <h2>{{ post.name }}</h2>
+  <img src="{{ post.image.url }}" />
+  <p>Description: {{ post.description }}</p>
+  <p>GameFAQS</p>
+
+  <ul>
+    {% for faq in faqs %}
+    <li><a href="#">{{ faq.body }}</a></li>
+    {% endfor %}
+  </ul>
+  <p>Release Date - {{ post.date_realesed }}</p>
+  {% endif %}
+</div>

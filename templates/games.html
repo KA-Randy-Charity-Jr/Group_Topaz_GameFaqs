@@ -1,55 +1,72 @@
 {% include "bootstrap.html" %} {% include "navbar.html" %}
 <style>
-  #cheatcodes{
-   float:left;
+  #main {
+    height: 100%;
   }
-
-  
-  
+  ul {
+    list-style-type: none;
+  }
 </style>
-
-<div class=".container-fluid bg-danger">
-  <div class="card .container-fluid" style="width: 25rem">
-    <div class="card-body">
-      <h1 class="card-title">{{g.title}}</h1>
-      <h5 class="card-title">Genre:{{g.genre}}</h5>
-      <h5 class="card-title">Release Date:{{g.date_realesed}}</h5>
-      <img width="250" height="250" src="{{ g.image.url }}" />
-      <h5>Consoles:</h5>
-      {% for console in c %}
-      <li><a href="/console/{{console.id}}">{{console.name}}</a></li>
-      {% endfor %}
-      <p class="card-text"></p>
+<div class=".container bg-danger text-light" id="main">
+  <div class=".container-fluid bg-dark float-left">
+    <div class="card .container-fluid bg-dark" style="width: 25rem">
+      <div class="card-body">
+        <h1 class="card-title">{{g.title}}</h1>
+        <h5 class="card-title">Genre:{{g.genre}}</h5>
+        <h5 class="card-title">Release Date:{{g.date_realesed}}</h5>
+        <img width="250" height="250" src="{{ g.image.url }}" />
+        <br />
+        <a href="/newgamefaq/{{g.id}}/" class="text-danger">Write a gamefaq!</a>
+        <h5>Consoles:</h5>
+        {% for console in c %}
+        <li>
+          <a href="/console/{{console.id}}" class="text-danger"
+            >{{console.name}}</a
+          >
+        </li>
+        {% endfor %}
+        <p class="card-text"></p>
+      </div>
     </div>
   </div>
-  <div class="card .container-fluid" style="width: 18rem" id="gamefaq">
+  <div class="card .container-fluid bg-dark" style="width: 18rem" id="gamefaq">
     <h5 class="card-title">GameFaqs</h5>
     <ul class="list-group list-group-flush">
       {% for e in f %} {% if e.ptype == 'GAMEFAQ' %}
       <li>
-        <a href="/gamefaq/{{e.id}}">{{e.title}}</a> For {{e.consoles.name}}</a>
+        <a href="/gamefaq/{{e.id}}" class="text-danger">{{e.title}}</a> For
+        {{e.consoles.name}}
       </li>
       {% endif %} {% endfor %}
     </ul>
   </div>
 
-  <div class="card .container-fluid" style="width: 18rem" id="cheatcodes">
+  <div
+    class="card .container-fluid bg-dark"
+    style="width: 18rem"
+    id="cheatcodes"
+  >
     <h5 class="card-title">Cheat Codes</h5>
     <ul class="list-group list-group-flush">
       {% for e in f %} {% if e.ptype == 'CHEATCODES' %}
-    <li>
-        <a href="/gamefaq/{{e.id}}">{{e.title}}</a> For {{e.consoles.name}}</a>
+      <li>
+        <a href="/gamefaq/{{e.id}}" class="text-danger">{{e.title}}</a> For
+        {{e.consoles.name}}
       </li>
       {% endif %} {% endfor %}
     </ul>
   </div>
 
-  <div class="card" style="width: 18rem" id="news">
+  <div class="card bg-dark" style="width: 18rem" id="news">
     <h5 class="card-title">News:</h5>
     <ul class="list-group list-group-flush">
       {% for e in n %}
-      <li><a href="/newspost/{{e.id}}/">{{e.title}} by {{e.author}}</a></li>
+      <li>
+        <a href="/newspost/{{e.id}}/" class="text-danger"
+          >{{e.title}} by {{e.author}}</a
+        >
+      </li>
       {% endfor %}
     </ul>
   </div>
-
+</div>

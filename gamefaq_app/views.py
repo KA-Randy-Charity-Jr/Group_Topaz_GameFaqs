@@ -20,9 +20,11 @@ def gamefaqview(request,gamefaqid):
 def indexview(request):
     f = Game.objects.all().order_by("-id")
     n = Newspost.objects.all().order_by("-id")
-    return render(request, "index.html", {"f": f,"n":n})
+    g = GameFaq.objects.all().order_by("-id")
+    return render(request, "index.html", {"f": f,"n":n,"g":g})
 
-def newgamefaqview(request):
+def newgamefaqview(request, gameid):
+    g = Game.objects.get(id=gameid)
     f = NewGamefaq()
     if request.method == "POST":
         form = NewGamefaq(request.POST)
@@ -30,7 +32,7 @@ def newgamefaqview(request):
             data = form.cleaned_data
             GameFaq.objects.create(
                 title=data.get('title'),
-                game=data.get('game'),
+                game=g,
                 body=data.get('body'),
                 difficulty=data.get('difficulty'), author=(request.user),
                 ptype=data.get('ptype'),consoles=data.get('console')),
@@ -55,3 +57,12 @@ class SearchResultsView(ListView):
         return object_list
 
 
+class FaqResultsView(ListView):
+    model = GameFaq
+    template_name = 'search_results.html'
+    def get_queryset(self): # new
+        query = self.request.GET.get('q')
+        object_list = GameFaq.objects.filter(
+            Q(title__icontains=query) | Q(body__icontains= query)
+        )
+        return object_list
