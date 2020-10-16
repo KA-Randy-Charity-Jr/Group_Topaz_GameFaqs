@@ -19,7 +19,7 @@
     {% endif %}
     <p class="lead"></p>
     <hr class="my-4" />
-    <p>The Place For the best Game-Faqs, Cheatcodes and Game News!</p>
+    <p class="text-dark">The Place For the best Game-Faqs, Cheatcodes and Game News!</p>
   </div>
   
   <div class="row">
@@ -60,16 +60,7 @@
   <br />
   <br />
 
-  <div class="card" style="width: 45rem" id='games'>
-    <h3>Recent Games List</h3>
-    <ul class="list-group list-group-flush">
-      {% for e in f %}
-      <li class="list-group-item">
-        <a id='game' href="/game/{{e.id}}">{{e.title}}</a>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
+ 
   <div class="col-sm-6">
     <div class="card bg-dark text-light">
       <div class="card-body">
@@ -121,14 +112,5 @@
 </div>
     </div>
   
-  <div class="card" style="width: 45rem" id='news'>
-    <h3>Recent News</h3>
-    <ul class="list-group">
-      {% for e in n %}
-      <li class="list-group-item">
-        <a id='news' href="/newspost/{{e.id}}">{{e.title}}</a>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
+
 
