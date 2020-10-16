@@ -1,14 +1,4 @@
 {% include "bootstrap.html" %} {% include "navbar.html"%}
-<style>
-
-  #game {
-    color: black;
-  }
-  #news {
-    color: black;
- 
-  }
-</style>
 <div class="bg-danger">
   <div class="jumbotron bg-dark text-light">
     <h1 class="display-4">WELCOME TO TOPAZ GAMEFAQS</h1>
@@ -20,12 +10,16 @@
     <p>The Place For the best Game-Faqs, Cheatcodes and Game News!</p>
   </div>
   
-  <br />
-  <br />
   
-  <div class="container ">
-    <h2>Games</h2>
-    <h3> search for GAMES </h2>
+  
+
+ 
+    <div class="row">
+  <div class="col-sm-6">
+    <div class="card bg-dark text-light">
+      <div class="card-body">
+        <h5 class="card-title">Games</h5>
+           <h5> search for Games </h5>
       <form
           class="form-inline"
           action="{% url 'search_results' %}"
@@ -43,34 +37,43 @@
           </button>
         </form>
         
-        
-    <h3>Recent Games List</h3>
-    <div class="card" style="width: 18rem">
-      <ul class="list-group list-group-flush">
+        <p class="card-text">Recent Games:</p>
+        <ul class="list-group list-group-flush">
         {% for e in f %}
-        <li class="list-group-item bg-danger">
-          <a id="game" href="/game/{{e.id}}">{{e.title}}</a>
+        <li class="list-group-item bg-dark">
+          <a id="game" href="/game/{{e.id}}"class="text-danger">{{e.title}}</a>
         </li>
         {% endfor %}
-      </ul>
+        </ul>
+        
+      </div>
     </div>
   </div>
-<div class="container ">
-  <h3>Recent News</h3>
-  <div class="card" style="width: 18rem">
-    <ul class="list-group list-group-flush">
-      {% for e in n %}
-      <li class="list-group-item bg-danger">
-        <a id="news" href="/newspost/{{e.id}}">{{e.title}}</a>
-      </li>
-      {% endfor %}
-    </ul>
+  <div class="col-sm-6">
+    <div class="card bg-dark text-light">
+      <div class="card-body">
+        <h5 class="card-title">News</h5>
+
+        <p class="card-text">Recent News:</p>
+        <ul class="list-group list-group-flush">
+        {% for e in n %}
+        <li class="list-group-item bg-dark">
+        <a id="news" href="/newspost/{{e.id}}"class="text-danger">{{e.title}}</a>
+        </li>
+        {% endfor %}
+        </ul>
+        
+      
+      </div>
+    </div>
   </div>
-  </div>
-  <div class="container ">
-    <h2>GAMEFAQS</h2>
-    <h3>Search For GAMEFAQS</h3>
-    <form class="form-inline" action="{% url 'search_result' %}" method="get">
+</div>
+  <div class="col-sm-6">
+    <div class="card bg-dark text-light">
+      <div class="card-body">
+        <h5 class="card-title">GAMEFAQS</h5>
+        <h5>Search for GAMEFAQS</h5>
+            <form class="form-inline" action="{% url 'search_result' %}" method="get">
       <input
         name="q"
         class="form-control mr-sm-2"
@@ -82,15 +85,19 @@
         Search
       </button>
     </form>
-    <h3>Recent GAMEFAQS</h3>
-    <div class="card" style="width: 18rem">
-      <ul class="list-group list-group-flush">
+        <p class="card-text">Recent GAMEFAQS:</p>
+         <ul class="list-group list-group-flush">
         {% for e in g %}
-        <li class="list-group-item bg-danger">
-          <a id="news" href="/gamefaq/{{e.id}}">{{e.title}}</a>
+        <li class="list-group-item bg-dark">
+          <a id="news" href="/gamefaq/{{e.id}}"class="text-danger">{{e.title}}</a>
         </li>
         {% endfor %}
       </ul>
+        
+      </div>
     </div>
   </div>
+</div>
+    </div>
+  
 
