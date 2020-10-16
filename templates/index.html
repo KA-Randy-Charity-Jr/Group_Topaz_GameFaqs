@@ -1,8 +1,7 @@
-{% include "bootstrap.html" %} {% include "navbar.html"%}
+{% include "bootstrap.html" %} {% include "navbar.html"%} {% load static %}
+<link rel="stylesheet" href="{% static 'css/topaz.css' %}" type="text/css" />
 <style>
-  body{
-    background-color: black;
-  }
+  
 
   #game{
     color: black;
@@ -10,9 +9,10 @@
   #news{
     color: black;
   }
+
 </style>
-<div class="bg-danger">
-  <div class="jumbotron bg-dark text-light">
+
+  <div class="jumbotron bg-dark text-light" id='tron'>
     <h1 class="display-4">WELCOME TO TOPAZ GAMEFAQS</h1>
     {% if request.user.is_authenticated %}
     <h2>Welcome, {{request.user.username}}</h2>
@@ -25,25 +25,25 @@
   <br />
   <br />
 
-  <h3>Recent Games List</h3>
-  <div class="card" style="width: 18rem">
+  <div class="card" style="width: 45rem" id='games'>
+    <h3>Recent Games List</h3>
     <ul class="list-group list-group-flush">
       {% for e in f %}
-      <li class="list-group-item bg-danger">
+      <li class="list-group-item">
         <a id='game' href="/game/{{e.id}}">{{e.title}}</a>
       </li>
       {% endfor %}
     </ul>
   </div>
 
-  <h3>Recent News</h3>
-  <div class="card" style="width: 18rem">
-    <ul class="list-group list-group-flush">
+  <div class="card" style="width: 45rem" id='news'>
+    <h3>Recent News</h3>
+    <ul class="list-group">
       {% for e in n %}
-      <li class="list-group-item bg-danger">
+      <li class="list-group-item">
         <a id='news' href="/newspost/{{e.id}}">{{e.title}}</a>
       </li>
       {% endfor %}
     </ul>
   </div>
-</div>
+
