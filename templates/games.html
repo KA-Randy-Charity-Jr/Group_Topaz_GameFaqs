@@ -16,7 +16,12 @@
         <h5 class="card-title">Release Date:{{g.date_realesed}}</h5>
         <img width="250" height="250" src="{{ g.image.url }}" />
         <br />
+        {% if request.user.is_authenticated %}
         <a href="/newgamefaq/{{g.id}}/" class="text-danger">Write a gamefaq!</a>
+        <a class="nav-link" href="/postnews/{{g.id}}/" class="text-danger"
+          >Post a News Story!</a
+        >
+        {% endif %}
         <h5>Consoles:</h5>
         {% for console in c %}
         <li>
