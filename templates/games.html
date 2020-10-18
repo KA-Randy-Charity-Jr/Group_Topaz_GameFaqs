@@ -24,7 +24,16 @@
         <a class="nav-link text-danger" href="/postnews/{{g.id}}/"
           >Post a News Story!</a
         >
-        {% endif %}
+        {% if isfavorite %}
+        <a class="btn btn-primary" href="/unfavorite/{{g.id}}/" role="button"
+          >Unfavorite Game</a
+        >
+        {% else %}
+        <a class="btn btn-primary" href="/favorite/{{g.id}}/" role="button"
+          >Favorite Game</a
+        >
+        {% endif %} {% endif %}
+
         <h5>Consoles:</h5>
         {% for console in c %}
         <li>

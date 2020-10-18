@@ -1,0 +1,30 @@
+{% include "bootstrap.html" %}{% include "navbar.html" %}
+
+<h1>Activity for users {{request.user.username}} is following:</h1>
+<h3>Gamefaqs:</h3>
+{% for faq in faqs %}
+
+<div class="card">
+  <h5 class="card-header">Gamefaq:</h5>
+  <div class="card-body">
+    <h5 class="card-title">{{faq.title}}</h5>
+    <p class="card-text">
+      posted by  <a href="/user_profile_view/{{faq.author.id}}/">{{faq.author.username}}
+    </p>
+    <a href="/gamefaq/{{faq.id}}/" class="btn btn-primary">View Gamefaq</a>
+  </div>
+</div>
+{% endfor %} 
+<h3>News Posts:</h3>
+{% for post in news %}
+<div class="card">
+  <h5 class="card-header">News Post:</h5>
+  <div class="card-body">
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-text">
+      posted by  <a href="/user_profile_view/{{post.author.id}}/">{{post.author.username}}
+    </p>
+    <a href="/newspost/{{post.id}}/" class="btn btn-primary">View NewsPost</a>
+  </div>
+</div>
+{% endfor %}

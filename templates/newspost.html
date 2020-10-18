@@ -11,5 +11,13 @@
       >
     </h5>
     <p class="card-text">{{post.body}}</p>
+    {% if request.user.id == post.author.id %}
+    <a class="btn btn-primary" href="/editnews/{{post.id}}/" role="button"
+      >Edit</a
+    >
+    <a class="btn btn-primary" href="/{{post.id}}/deletenews/" role="button"
+      >Delete</a
+    >
+    {% endif %}
   </div>
 </div>

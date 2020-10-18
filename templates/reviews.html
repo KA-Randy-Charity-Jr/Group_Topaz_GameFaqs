@@ -21,6 +21,14 @@
       Written by:
       <a href="/user_profile_view/{{review.author.id}}/"> {{review.author}}</a>
     </p>
+    {% if request.user.id == review.author.id %}
+    <a class="btn btn-primary" href="/editreview/{{review.id}}/" role="button"
+      >edit</a
+    >
+    <a class="btn btn-primary" href="/{{review.id}}/deletereview/" role="button"
+      >delete</a
+    >
+    {% endif %}
   </div>
   <br />
   <br />

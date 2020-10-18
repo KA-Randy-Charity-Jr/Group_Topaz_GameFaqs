@@ -12,11 +12,20 @@
 {% elif e.added < 0%}
 <p>reviews on this gamefaq are mostly negative</p>
 {% endif %}
+
 <a href="/{{e.id}}/reviews/">View Reviews of this gamefaq </a>
 
 <br />
 <br />
+<p>
+  Written by
+  <a href="/user_profile_view/{{e.author.id}}/">{{e.author.username}}</a>
+</p>
+{% if request.user.username == e.author.username %}
+<a class="btn btn-primary" href="/editgamefaq/{{e.id}}/" role="button">edit</a>
+<a class="btn btn-primary" href="/{{e.id}}/deletefaq/" role="button">delete</a>
 
+{% endif %}
 <pre id="pre">
 --------------------------------------------------------------------
 TITLE:

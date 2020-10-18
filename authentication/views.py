@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
+
 def login_view(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
@@ -18,12 +19,13 @@ def login_view(request):
             if user:
                 login(request, user)
                 return HttpResponseRedirect(
-                    request.GET.get('next', reverse ("home")))
+                    request.GET.get('next', reverse("home")))
             else:
-                return HttpResponseRedirect()
+                return HttpResponseRedirect(reverse("home"))
     form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
+
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("login"))       
+    return HttpResponseRedirect(reverse("login"))

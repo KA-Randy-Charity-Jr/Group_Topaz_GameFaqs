@@ -33,15 +33,18 @@ from reviews_app import views as reviewsviews
 
 urlpatterns = [
     path('', gamefaqviews.indexview, name='home'),
-    path('user_profile_view/<int:user_id>/edit/',userviews.edit_user_profile_view.as_view()),
-    path('user_profile_view/<int:user_id>/', userviews.user_profile_view, name='user_profile'),
+    path('user_profile_view/<int:user_id>/edit/',
+         userviews.edit_user_profile_view.as_view()),
+    path('user_profile_view/<int:user_id>/',
+         userviews.user_profile_view, name='user_profile'),
     path('login_view/', login_view, name='login'),
     path('signup_view/', userviews.signup_view.as_view()),
     path('logout_view/', logout_view, name='logout'),
     path('admin/', admin.site.urls),
-    path('gamefaq/<int:gamefaqid>/',gamefaqviews.gamefaqview,name="gamefaq"),
-    path('game/<int:gameid>/',gameviews.gamesview,name="game"),
-    path('newgamefaq/<int:gameid>/', gamefaqviews.newgamefaqview, name="newgamefaq"),
+    path('gamefaq/<int:gamefaqid>/', gamefaqviews.gamefaqview, name="gamefaq"),
+    path('game/<int:gameid>/', gameviews.gamesview, name="game"),
+    path('newgamefaq/<int:gameid>/',
+         gamefaqviews.newgamefaqview, name="newgamefaq"),
     path('playstation/', consoleviews.PlaystationView, name="playstation"),
     path('xbox/', consoleviews.XboxView, name="xbox"),
     path('nintendo/', consoleviews.NintendoView, name="nintendo"),
@@ -52,7 +55,37 @@ urlpatterns = [
     path('search/', gamefaqviews.SearchResultsView.as_view(), name='search_results'),
     path('faqsearch/', gamefaqviews.FaqResultsView.as_view(), name='search_result'),
     path('<int:faqid>/reviews/', reviewsviews.ReviewsView, name="reviews"),
-    path('newreview/<int:faqid>/',reviewsviews.CreateReview.as_view(),name="reviewform")
+    path('newreview/<int:faqid>/',
+         reviewsviews.CreateReview.as_view(), name="reviewform"),
+    path('follow/<int:userid>/', userviews.FollowView.as_view(), name="followuser"),
+    path('unfollow/<int:userid>/',
+         userviews.UnFollowView.as_view(), name="unfollowuser"),
+    path('favorite/<int:gameid>/',
+         userviews.FavoriteView.as_view(), name="favoritegame"),
+    path('unfavorite/<int:gameid>/',
+         userviews.UnFavoriteView.as_view(), name="unfavortiegame"),
+    path('comment/<int:userid>/', userviews.CommentView.as_view(), name="comments"),
+    path('consolefav/<int:consoleid>/',
+         userviews.ConsoleFavView.as_view(), name="consolefav"),
+    path('consoleunfav/<int:consoleid>/',
+         userviews.ConsoleUnfavView.as_view(), name="consoleunfav"),
+    path('editgamefaq/<int:faqid>/',
+         gamefaqviews.Edit_GamefaqView.as_view(), name="editgamefaq"),
+    path('editreview/<int:reviewid>/',
+         reviewsviews.Edit_ReviewView.as_view(), name="editreview"),
+    path('editnews/<int:newsid>/',
+         newsviews.Edit_NewsView.as_view(), name="editnews"),
+    path('editcomment/<int:commentid>/',
+         userviews.edit_user_comment_view.as_view(), name="editcomment"),
+    path('<pk>/deletecomment/',
+         userviews.DeleteComment.as_view(), name="deletecomment"),
+    path('<pk>/deletereview/',
+         reviewsviews.DeleteReview.as_view(), name="deletereview"),
+    path('<pk>/deletenews/',
+         newsviews.DeleteNews.as_view(), name="deletenews"),
+    path('<pk>/deletefaq/',
+         gamefaqviews.Deletefaq.as_view(), name="deletefaq"),
+    path('activityfeed/', gamefaqviews.ActivityFeed.as_view(), name="activityfeed")
 ]
 
 handler404 = 'gamefaq_app.views.handler404'
@@ -62,6 +95,5 @@ urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += [re_path(r'^gallery/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT,}),]
-
-
+urlpatterns += [re_path(r'^gallery/(?P<path>.*)$', serve,
+                        {'document_root': settings.MEDIA_ROOT, }), ]

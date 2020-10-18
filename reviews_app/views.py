@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 from reviews_app.forms import ReviewForm
 from django.shortcuts import render, HttpResponseRedirect, reverse, HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import DeleteView
 
 
 # Create your views here.
@@ -41,3 +42,44 @@ class CreateReview(LoginRequiredMixin, TemplateView):
                 )
 
                 return HttpResponseRedirect(reverse('home'))
+
+
+class Edit_ReviewView(LoginRequiredMixin, TemplateView):
+    def get(self, request, reviewid):
+        reccomend = ""
+        review = Review.objects.get(id=reviewid)
+        if request.user.id == review.author.id:
+            if review.isreccomend == True:
+                reccomend = "YES"
+            else:
+                reccomend: "NO"
+            data = {
+                "body": review.body,
+                "isreccomend": reccomend
+            }
+            f = ReviewForm(initial=data)
+            return render(request, "form.html", {"f": f})
+        else:
+            return HttpResponseRedirect(reverse('home'))
+
+    def post(self, request, reviewid):
+        isreccomend = False
+        review = Review.objects.get(id=reviewid)
+
+        if request.method == "POST":
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                data = form.cleaned_data
+                if data.get('isreccomend') == "YES":
+                    isreccomend = True
+
+                review.isreccomend = isreccomend
+                review.body = data["body"]
+                review.save()
+                return HttpResponseRedirect(f"/{review.gamefaq.id}/reviews/")
+
+
+class DeleteReview(DeleteView):
+    model = Review
+    template_name = "delete.html"
+    success_url = "/"

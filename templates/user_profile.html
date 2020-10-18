@@ -13,12 +13,35 @@
       <h3>Bio:</h3>
       <b>{{ profile.bio }}</b>
       <h3>Preferred Gaming Systems:</h3>
-      {{ profile.preferred_systems}}
+      <ul>
+        {% for console in consoles %}
+        <li><a href="/console/{{console.id}}/">{{console.name}}</a></li>
+        {% endfor %}
+      </ul>
+      <br />
+      <h3>Favorite Games:</h3>
+      <ul>
+        {% for game in games %}
+        <li><a href="/game/{{game.id}}/">{{game.title}}</a></li>
+        {% endfor %}
+      </ul>
       <br />
       <h3>Contact Info</h3>
       {{ profile.email }}
       <br />
     </li>
+    <li>Followers:{{followers.count}}</li>
+    {% if request.user.username != profile.username %} {% if isfollow %}
+    <a class="btn btn-primary" href="/unfollow/{{profile.id}}/" role="button"
+      >Unfollow User</a
+    >
+    {% else %}
+
+    <a class="btn btn-primary" href="/follow/{{profile.id}}/" role="button"
+      >Follow User</a
+    >
+
+    {% endif %} {% endif %}
   </ul>
 </div>
 <div>
@@ -32,3 +55,32 @@
     {% endfor %} {% endif %}
   </ul>
 </div>
+<div>
+  {% if request.user.is_authenticated %}
+  <a class="btn btn-primary" href="/comment/{{profile.id}}" role="button"
+    >post a comment</a
+  >
+  {% endif %}
+</div>
+{% for comment in comments %}
+<div class="card">
+  <div class="card-header">Comment:</div>
+  <div class="card-body">
+    <h5 class="card-title">{{comment.author.username}}</h5>
+    <p class="card-text">{{comment.body}}</p>
+    <p class="card-text">{{comment.post_date}}</p>
+    {% if request.user.id == comment.author.id %}
+    <a class="btn btn-primary" href="/editcomment/{{comment.id}}/" role="button"
+      >Edit</a
+    >
+    <a
+      class="btn btn-primary"
+      href="/{{comment.id}}/deletecomment/"
+      role="button"
+      >Delete</a
+    >
+    {% endif %}
+  </div>
+</div>
+
+{% endfor %}

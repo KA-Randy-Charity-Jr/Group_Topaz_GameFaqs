@@ -7,7 +7,13 @@
     <p class="lead">a list of games</p>
   </div>
 </div>
-
+{% if isfavorite %}
+<a class="btn btn-primary" href="/consoleunfav/{{console.id}}/" role="button"
+  >Unfavorite Console</a
+>{% else %}
+<a class="btn btn-primary" href="/consolefav/{{console.id}}/" role="button"
+  >Favorite Console</a
+>{% endif %}
 <h3>games:</h3>
 <ul>
   {% for game in games %}
