@@ -1,21 +1,26 @@
-{% include "bootstrap.html" %}{% include "navbar.html" %}
-
-<div class="card">
-  <h5 class="card-header">{{post.title}}</h5>
-  <p>{{post.game}}</p>
+{% include "bootstrap.html" %}{% load static %}<link
+  rel="stylesheet"
+  href="{% static 'css/newspost.css' %}"
+  type="text/css"
+/>{% include "navbar.html" %}
+<h1 class="text-danger">NEWS POST</h1>
+<div class="card bg-dark text-danger">
+  <h5 class="card-header">Title: {{post.title}}</h5>
+  <p>Related to game: {{post.game}}</p>
   <div class="card-body">
     <h5 class="card-title">
       written by:
-      <a href="/user_profile_view/{{post.author.id}}/"
+      <a href="/user_profile_view/{{post.author.id}}/" class="text-danger"
         >{{post.author.username}}</a
       >
     </h5>
+    <p>body:</p>
     <p class="card-text">{{post.body}}</p>
     {% if request.user.id == post.author.id %}
-    <a class="btn btn-primary" href="/editnews/{{post.id}}/" role="button"
+    <a class="btn btn-danger" href="/editnews/{{post.id}}/" role="button"
       >Edit</a
     >
-    <a class="btn btn-primary" href="/{{post.id}}/deletenews/" role="button"
+    <a class="btn btn-danger" href="/{{post.id}}/deletenews/" role="button"
       >Delete</a
     >
     {% endif %}

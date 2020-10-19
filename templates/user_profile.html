@@ -1,59 +1,78 @@
-{% include "bootstrap.html" %} {% include "navbar.html" %} {% if not profile %}
+{% include "bootstrap.html" %} {% load static %}<link
+  rel="stylesheet"
+  href="{% static 'css/userprofile.css' %}"
+  type="text/css"
+/>
+{% include "navbar.html" %} {% if not profile %}
+
 <h1>the user you're looking for isn't here at the moment</h1>
 {% else %}
 <h1>User Profile Page</h1>
-{% if request.user.username == profile.username %}
-<a href="/user_profile_view/{{request.user.id}}/edit/">Edit Profile</a>
-{% endif %}
-<br />
-<h2>Welcome, {{ profile.displayname }}!</h2>
-<div class="card" style="width: 18rem">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item bg-info">
-      <h3>Bio:</h3>
-      <b>{{ profile.bio }}</b>
-      <h3>Preferred Gaming Systems:</h3>
-      <ul>
-        {% for console in consoles %}
-        <li><a href="/console/{{console.id}}/">{{console.name}}</a></li>
-        {% endfor %}
-      </ul>
-      <br />
-      <h3>Favorite Games:</h3>
-      <ul>
-        {% for game in games %}
-        <li><a href="/game/{{game.id}}/">{{game.title}}</a></li>
-        {% endfor %}
-      </ul>
-      <br />
-      <h3>Contact Info</h3>
-      {{ profile.email }}
-      <br />
-    </li>
-    <li>Followers:{{followers.count}}</li>
-    {% if request.user.username != profile.username %} {% if isfollow %}
-    <a class="btn btn-primary" href="/unfollow/{{profile.id}}/" role="button"
-      >Unfollow User</a
-    >
-    {% else %}
+<div class="main">
+  <div class="card" style="width: 18rem">
+    {% if profile.image %}
+    <img
+      src="{{profile.image.url}}"
+      class="card-img-top"
+      alt="No Photo Found"
+    />
+    {% endif %}
+    <div class="card-body bg-dark text-light">
+      <h5 class="card-title">Username: {{profile.username}}</h5>
+      <h5 class="card-title">Displayname: {{profile.displayname}}</h5>
+      <p class="card-text">Bio: {{profile.bio}}</p>
+      <li>Followers:{{followers.count}}</li>
+      {% if request.user.username != profile.username %} {% if isfollow %}
+      <a class="btn btn-primary" href="/unfollow/{{profile.id}}/" role="button"
+        >Unfollow User</a
+      >
+      {% else %}
 
-    <a class="btn btn-primary" href="/follow/{{profile.id}}/" role="button"
-      >Follow User</a
-    >
+      <a class="btn btn-primary" href="/follow/{{profile.id}}/" role="button"
+        >Follow User</a
+      >
 
-    {% endif %} {% endif %}
-  </ul>
-</div>
-<div>
-  <br />
-  <h3>Authored Game FAQs</h3>
-  <ul>
-    {% for e in f %}
+      {% endif %} {% endif %} {% if request.user.username == profile.username %}
+      <a href="/user_profile_view/{{request.user.id}}/edit/">Edit Profile</a
+      ><br />
+      <a href="/upload/{{profile.id}}/">upload photo</a>
+      {% endif %}
+    </div>
+  </div>
 
-    <li><a href="/gamefaq/{{ e.id }}/">{{ e.title }}</a></li>
+  <div class="card bg-dark text-light" style="width: 18rem">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item bg-dark">
+        <h3>Preferred Gaming Systems:</h3>
+        <ul>
+          {% for console in consoles %}
+          <li><a href="/console/{{console.id}}/">{{console.name}}</a></li>
+          {% endfor %}
+        </ul>
+        <br />
+        <h3>Favorite Games:</h3>
+        <ul>
+          {% for game in games %}
+          <li><a href="/game/{{game.id}}/">{{game.title}}</a></li>
+          {% endfor %}
+        </ul>
+        <br />
+        <h3>Contact Info</h3>
+        {{ profile.email }}
+        <br />
+      </li>
+    </ul>
+  </div>
+  <div class="card bg-dark text-light">
+    <h3>Authored Game FAQs</h3>
+    <ul>
+      {% for e in f %}
 
-    {% endfor %} {% endif %}
-  </ul>
+      <li><a href="/gamefaq/{{ e.id }}/">{{ e.title }}</a></li>
+
+      {% endfor %} {% endif %}
+    </ul>
+  </div>
 </div>
 <div>
   {% if request.user.is_authenticated %}
@@ -63,7 +82,7 @@
   {% endif %}
 </div>
 {% for comment in comments %}
-<div class="card">
+<div class="card bg-dark text-light">
   <div class="card-header">Comment:</div>
   <div class="card-body">
     <h5 class="card-title">{{comment.author.username}}</h5>

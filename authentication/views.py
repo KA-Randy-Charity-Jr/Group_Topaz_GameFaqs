@@ -21,7 +21,7 @@ def login_view(request):
                 return HttpResponseRedirect(
                     request.GET.get('next', reverse("home")))
             else:
-                return HttpResponseRedirect(reverse("home"))
+                return HttpResponseRedirect()
     form = LoginForm()
     return render(request, 'login.html', {'form': form})
 

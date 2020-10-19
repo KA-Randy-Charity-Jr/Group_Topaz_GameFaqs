@@ -11,6 +11,7 @@ from game_app.models import Game
 from console_app.models import Console
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import DeleteView
+from django.views.generic.edit import UpdateView
 
 # Create your views here.
 
@@ -183,4 +184,11 @@ class edit_user_comment_view(LoginRequiredMixin, TemplateView):
 class DeleteComment(DeleteView):
     model = User_Comments
     template_name = "delete.html"
+    success_url = "/"
+
+
+class Upload_photo_view(UpdateView):
+    model = GamefaqUser
+    fields = ["image"]
+    template_name = 'uploadimage.html'
     success_url = "/"

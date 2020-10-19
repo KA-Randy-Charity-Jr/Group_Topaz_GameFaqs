@@ -1,0 +1,11 @@
+html,
+body {
+  background-image: url("images/albion.jpg");
+  background-size: 100% 100%;
+}
+
+.card {
+  opacity: 0.9;
+
+  display: flex;
+}

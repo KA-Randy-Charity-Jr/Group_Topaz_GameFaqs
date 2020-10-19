@@ -1,0 +1,15 @@
+html,
+body {
+  background-image: url("images/download.jpg");
+  background-size: 100% 100%;
+}
+
+.main {
+  display: flex;
+}
+
+.card {
+  opacity: 0.9;
+
+  display: flex;
+}

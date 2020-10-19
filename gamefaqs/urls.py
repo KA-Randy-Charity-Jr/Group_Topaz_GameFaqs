@@ -85,7 +85,9 @@ urlpatterns = [
          newsviews.DeleteNews.as_view(), name="deletenews"),
     path('<pk>/deletefaq/',
          gamefaqviews.Deletefaq.as_view(), name="deletefaq"),
-    path('activityfeed/', gamefaqviews.ActivityFeed.as_view(), name="activityfeed")
+    path('activityfeed/', gamefaqviews.ActivityFeed.as_view(), name="activityfeed"),
+    path('upload/<slug:pk>/', userviews.Upload_photo_view.as_view(),
+         name='Photo_upload'),
 ]
 
 handler404 = 'gamefaq_app.views.handler404'
