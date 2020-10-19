@@ -2,10 +2,11 @@
         
         background-image:url('images/space.jpg');
         background-size: cover;
-       
+    
     }
     .container{
     height: 100%;
+
     align-content: center;
     }
     

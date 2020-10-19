@@ -1,0 +1,11 @@
+{% include "bootstrap.html" %} {% include "navbar.html" %}
+<style>
+  #germ{
+      text-align: center;
+  }
+</style>
+<form action="" id='germ' method="post">
+  {% csrf_token %} {{form.as_p}}
+  
+  <input type="submit" value="Submit!" />
+</form>
