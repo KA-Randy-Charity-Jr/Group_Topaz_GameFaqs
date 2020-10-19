@@ -9,9 +9,14 @@ def PlaystationView(request):
     return render(request, "playstation.html", {"consoles": theconsoles})
     
 def XboxView(request):
-    theconsoles = Console.objects.filter(brand="XBOX").order_by("-id")
+    theconsoles = Console.objects.filter(brand='XBOX').order_by("-id")
     return render(request, "xbox.html", {"consoles": theconsoles})
-    
+
+def games(request, console_id):
+    theexclusives = Game.objects.filter(consoles=console_id).order_by("-id")
+    return render(request, "xbox.html", {"ex":theexclusives})
+
+
 def NintendoView(request):
     theconsoles = Console.objects.filter(brand="NINTENDO").order_by("-id")
     return render(request, "nintendo.html", {"consoles": theconsoles})

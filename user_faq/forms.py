@@ -2,9 +2,9 @@ from django import forms
 from user_faq import models
 
 class SignupForm(forms.ModelForm):
-    displayname = forms.CharField(max_length=80)
-    username = forms.CharField(max_length=240)
-    password = forms.CharField(widget=forms.PasswordInput)
+    displayname = forms.CharField(max_length=80, widget=forms.TextInput(attrs={'placeholder': 'username'}))
+    username = forms.CharField(max_length=240, widget=forms.TextInput(attrs={'placeholder': 'displayname'}))
+    password = forms.CharField(widget=forms.PasswordInput({'placeholder': 'password'}))
 
     class Meta:
         model = models.GamefaqUser

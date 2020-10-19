@@ -1,19 +1,44 @@
-body{
-    background-image:url('images/legend.gif');
-    background-size: cover;
-}
-
-#games{
-    margin: 0 auto;
-    bottom: 50px;
-}
-
-#news{
-    margin: 0 auto;
+html, body{
+    background-image: url('images/legend.gif') ;
+    background-size: 100% 100%; 
     
 }
 
-#tron{
-    height: 30%;
+.container{
+    position: relative;
+    bottom: 32px;
+    height: 10px;
+}
+
+.card{
+    opacity: .9;
+    margin-top: -2%;
+    
+    display: flex; 
+}
+
+.card-group{
+    display: flex; 
+
+}
+.jumbotron{
+    opacity: .9;
+
+}
+#games{
+    
+    position: absolute;
+   
+}
+
+#card-body{
+    width: 500px;
+    
+    
+}
+
+
+.news{
+    background-color: red;
 }
 

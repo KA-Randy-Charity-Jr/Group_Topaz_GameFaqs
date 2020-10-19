@@ -1,16 +1,18 @@
 {% include "bootstrap.html" %}{% include "navbar.html" %}{% load static %}
 <link rel="stylesheet" href="{% static 'css/xbox.css' %}" type="text/css" />
-<style>
 
-</style>
 <div class="jumbotron bg-success">
   <h1 class="display-4">XBOX CONSOLES</h1>
-  <p class="lead"></p>
   <hr class="my-4" />
   <p>MASTER CHIEF WELCOMES YOU</p>
 </div>
-<h5>consoles:</h5>
-<div class="card" style="width: 18rem">
+
+
+
+<div class="card bg-dark">
+  <div class='card-title'>
+    <h2><u>Consoles</u></h2>
+  </div>
   <ul class="list-group list-group-flush">
     {% for console in consoles %}
     <li class="list-group-item">
@@ -19,3 +21,4 @@
     {% endfor %}
   </ul>
 </div>
+

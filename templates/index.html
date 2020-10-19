@@ -1,34 +1,23 @@
 {% include "bootstrap.html" %} {% include "navbar.html"%} {% load static %}
 <link rel="stylesheet" href="{% static 'css/topaz.css' %}" type="text/css" />
-<style>
-  
 
-  #game{
-    color: black;
-  }
-  #news{
-    color: black;
-  }
-
-</style>
-
+ 
   <div class="jumbotron bg-dark text-light" id='tron'>
     <h1 class="display-4">WELCOME TO TOPAZ GAMEFAQS</h1>
     {% if request.user.is_authenticated %}
     <h2>Welcome, {{request.user.username}}</h2>
     {% endif %}
-    <p class="lead"></p>
-    <hr class="my-4" />
-    <p class="text-dark">The Place For the best Game-Faqs, Cheatcodes and Game News!</p>
+    
+    <p>The Place For the best Game-Faqs, Cheatcodes and Game News!</p>
   </div>
-  
-  <div class="row">
-  <div class="col-sm-6">
-    <div class="card bg-dark text-light">
+
+
+  <div class="card-group">
+    <div class="card bg-dark text-light" >
       <div class="card-body">
-        <h5 class="card-title">Games</h5>
-           <h5> search for Games </h5>
-      <form
+        <h5 class="card-title"><u>Games</u></h5>
+           <h5> Search for Games </h5>
+       <form
           class="form-inline"
           action="{% url 'search_results' %}"
           method="get"
@@ -55,22 +44,46 @@
         </ul>
         
       </div>
-    </div>
-  <br />
-  <br />
-  <br />
+  </div>
+    
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <h5 class="card-title"><u>GAMEFAQ</u></h5>
+          <h5>Search for GAMEFAQS</h5>
+              <form class="form-inline" action="{% url 'search_result' %}" method="get">
+        <input
+          name="q"
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          Search
+        </button>
+        </form>
+          <p class="card-text">Recent GAMEFAQS:</p>
+           <ul class="list-group list-group-flush">
+          {% for e in g %}
+          <li class="list-group-item bg-dark">
+            <a  href="/gamefaq/{{e.id}}"class="text-danger">{{e.title}}</a>
+          </li>
+          {% endfor %}
+        </ul>
+          
+      </div>
+      </div>
 
  
-  <div class="col-sm-6">
-    <div class="card bg-dark text-light">
+ 
+    <div class="card bg-dark text-light" >
       <div class="card-body">
-        <h5 class="card-title">News</h5>
-
+        <h5 class="card-title"><u>News</u></h5>
         <p class="card-text">Recent News:</p>
         <ul class="list-group list-group-flush">
         {% for e in n %}
         <li class="list-group-item bg-dark">
-        <a id="news" href="/newspost/{{e.id}}"class="text-danger">{{e.title}}</a>
+        <a  href="/newspost/{{e.id}}" class="text-danger">{{e.title}}</a>
         </li>
         {% endfor %}
         </ul>
@@ -78,39 +91,11 @@
       
       </div>
     </div>
+
   </div>
 </div>
-  <div class="col-sm-6">
-    <div class="card bg-dark text-light">
-      <div class="card-body">
-        <h5 class="card-title">GAMEFAQS</h5>
-        <h5>Search for GAMEFAQS</h5>
-            <form class="form-inline" action="{% url 'search_result' %}" method="get">
-      <input
-        name="q"
-        class="form-control mr-sm-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-        Search
-      </button>
-    </form>
-        <p class="card-text">Recent GAMEFAQS:</p>
-         <ul class="list-group list-group-flush">
-        {% for e in g %}
-        <li class="list-group-item bg-dark">
-          <a id="news" href="/gamefaq/{{e.id}}"class="text-danger">{{e.title}}</a>
-        </li>
-        {% endfor %}
-      </ul>
-        
-      </div>
-    </div>
-  </div>
 </div>
-    </div>
+
   
 
 

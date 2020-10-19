@@ -1,4 +1,5 @@
-{% include "bootstrap.html" %}{% include "navbar.html" %}
+{% include "bootstrap.html" %}{% include "navbar.html" %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/play.css' %}" type="text/css" />
 <style>
   body{
     background-color: cornflowerblue;
@@ -10,8 +11,10 @@
   <hr class="my-4" />
   <p>SONYS ICONIC LINE OF CONSOLES</p>
 </div>
-<h5>consoles:</h5>
-<div class="card" style="width: 18rem">
+<div class="card bg-dark">
+  <div class='card-title'>
+    <h2><u>Consoles</u></h2>
+  </div>
   <ul class="list-group list-group-flush">
     {% for console in consoles %}
     <li class="list-group-item">

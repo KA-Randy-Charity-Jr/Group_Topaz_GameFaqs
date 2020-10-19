@@ -1,15 +1,18 @@
 body{
-    background-image: url(images/box.jpg);
+    background-image: url(images/mario2.jpg);
     background-size: cover;
 }
-
+.jumbotron{
+    opacity: .8;
+}
 h2{
-    color: lawngreen;
+    color: rgb(255, 51, 0);
     margin-left: 10px;
 }
 
 .list-group-item{
-    background-color: lawngreen;
+   
+    opacity: .8;
 }
 
 .card{
@@ -18,10 +21,6 @@ h2{
     margin-top: -33px;  
 }
 
-.jumbotron{
-    opacity: .8;
-}
-
 a{
-    color: black;
+    color: black
 }
