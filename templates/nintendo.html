@@ -1,20 +1,19 @@
-{% include "bootstrap.html" %}{% include "navbar.html" %}
-<style>
-  body{
-    background-color: lightcoral;
-  }
-</style>
+{% include "bootstrap.html" %}{% include "navbar.html" %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/nintendo.css' %}" type="text/css" />
 <div class="jumbotron bg-danger">
   <h1 class="display-4">NINTENDO CONSOLES</h1>
   <p class="lead"></p>
   <hr class="my-4" />
   <p>HOME OF LUIGI!</p>
 </div>
-<h5>consoles:</h5>
-<div class="card" style="width: 18rem">
+
+<div class="card bg-dark">
+  <div class='card-title'>
+    <h2><u>Consoles</u></h2>
+  </div>
   <ul class="list-group list-group-flush">
     {% for console in consoles %}
-    <li class="list-group-item">
+    <li class="list-group-item bg-danger">
       <a href="/console/{{console.id}}">{{console.name}}</a>
     </li>
     {% endfor %}

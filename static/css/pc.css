@@ -1,0 +1,30 @@
+body{
+    background-image: url(images/pc.jpg);
+    background-size: cover;
+}
+.jumbotron{
+    opacity: .8;
+}
+h2{
+    color: rgb(92, 92, 92);
+    margin-left: 10px;
+}
+
+.list-group-item{
+    color: gray;
+    opacity: .8;
+}
+
+.card{
+   opacity: .8;
+    position: relative;
+    margin-top: -33px;  
+}
+
+a{
+    color: rgb(231, 231, 231);
+}
+
+h2{
+    color: rgb(230, 228, 228);
+}
