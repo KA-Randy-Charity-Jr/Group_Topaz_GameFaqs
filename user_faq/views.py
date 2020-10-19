@@ -70,7 +70,7 @@ class edit_user_profile_view(LoginRequiredMixin, TemplateView):
             "email": faq_user.email
         }
         form = GamefaqUserForm(initial=data)
-        return render(request, "edit_form.html", {"form": form})
+        return render(request, "edituser.html", {"form": form})
 
     def post(self, request, user_id):
         faq_user = GamefaqUser.objects.get(id=user_id)

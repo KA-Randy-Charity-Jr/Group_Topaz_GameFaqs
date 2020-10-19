@@ -1,24 +1,60 @@
-{% include "bootstrap.html" %}{% include "navbar.html" %}
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">{{console.brand}}</h1>
-    <h4 class="display-4">{{console.name}}</h4>
+{% include "bootstrap.html" %}{% include "navbar.html" %}{% load static %}
+<link rel="stylesheet" href="{% static 'css/consoles.css' %}" type="text/css" />
 
-    <p class="lead">a list of games</p>
-  </div>
-</div>
-{% if isfavorite %}
-<a class="btn btn-primary" href="/consoleunfav/{{console.id}}/" role="button"
+{% if console.brand == 'XBOX' %}
+<style>
+  body{
+    background-color: chartreuse;
+  }
+</style>
+{% endif %}
+{% if console.brand == 'PLAYSTATION' %}
+<style>
+  body{
+    background-color: cyan;
+  }
+</style>
+{% endif %}
+{% if console.brand == 'NINTENDO' %}
+<style>
+  body{
+    background-color: rgb(241, 7, 241);
+  }
+</style>
+{% endif %}
+{% if console.brand == 'PC' %}
+<style>
+  body{
+    background-color: lightgray;
+  }
+</style>
+{% endif %}
+<div class="jumbotron jumbotron-fluid bg-dark text-light">
+  <div class="container">
+    <h4 class="display-4">System: {{console.name}}</h4>
+
+    <p class="lead">A list of compatible games</p>
+    <p class="lead">
+    {% if isfavorite %}
+<a class="btn btn-danger" href="/consoleunfav/{{console.id}}/" role="button"
   >Unfavorite Console</a
 >{% else %}
-<a class="btn btn-primary" href="/consolefav/{{console.id}}/" role="button"
+<a class="btn btn-success" href="/consolefav/{{console.id}}/" role="button"
   >Favorite Console</a
 >{% endif %}
-<h3>games:</h3>
+  </p>
+
+  </div>
+</div>
+
+<div class="text">
+<h3><u>Games:</u></h3>
 <ul>
   {% for game in games %}
   <li>
-    <a href="/game/{{game.id}}">{{game.title}}</a>
+    <img width="40" height="40" src="{{ game.image.url }}" />
+    <a class="text-dark" href="/game/{{game.id}}">{{game.title}}</a>
   </li>
   {% endfor %}
 </ul>
+</div>
