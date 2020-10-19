@@ -1,32 +1,36 @@
-{% include "bootstrap.html" %} {% include "navbar.html" %} {% for e in f %}
-<style>
-  #pre {
-    text-align: center;
-  }
-</style>
-<p>this gamefaq has {{r}} reviews</p>
+{% include "bootstrap.html" %} {% include "navbar.html" %}<body class="bg-dark"> {% for e in f %}
+<div class="container bg-dark text-danger">
+<div class="card bg-dark text-danger" style="width: 18rem;">
+  <img src="{{e.game.image.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+  <h5 class="card-title"> FOR <a href="/game/{{e.game.id}}/" class="text-danger">{{e.game.title}}</a> </h5>
+    <h5 class="card-title"> GAMEFAQ Reviews</h5>
+    <p class="card-text">this gamefaq has {{r}} reviews</p>
 {% if e.added > 1 %}
-<p>reviews on this gamefaq are mostly positive</p>
+<p class="card-text">reviews on this gamefaq are mostly positive</p>
 {% elif e.added == 0 %}
-<p>reviews on this gamefaq are mostly neutral</p>
+<p class="card-text">reviews on this gamefaq are mostly neutral</p>
 {% elif e.added < 0%}
-<p>reviews on this gamefaq are mostly negative</p>
+<pclass="card-text">reviews on this gamefaq are mostly negative</p>
 {% endif %}
+    
+    <a href="/{{e.id}}/reviews/" class="btn btn-danger">View Reviews</a>
+  </div>
+</div>
 
-<a href="/{{e.id}}/reviews/">View Reviews of this gamefaq </a>
 
 <br />
 <br />
 <p>
   Written by
-  <a href="/user_profile_view/{{e.author.id}}/">{{e.author.username}}</a>
+  <a href="/user_profile_view/{{e.author.id}}/" class="text-danger">{{e.author.username}}</a>
 </p>
 {% if request.user.username == e.author.username %}
-<a class="btn btn-primary" href="/editgamefaq/{{e.id}}/" role="button">edit</a>
-<a class="btn btn-primary" href="/{{e.id}}/deletefaq/" role="button">delete</a>
+<a class="btn btn-danger" href="/editgamefaq/{{e.id}}/" role="button">edit</a>
+<a class="btn btn-danger" href="/{{e.id}}/deletefaq/" role="button">delete</a>
 
 {% endif %}
-<pre id="pre">
+<pre id="pre" class="bg-dark text-light">
 --------------------------------------------------------------------
 TITLE:
 --------------------------------------------------------------------
@@ -42,3 +46,5 @@ FAQ:
 </pre>
 
 {% endfor %}
+</div>
+</body>

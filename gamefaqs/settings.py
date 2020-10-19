@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import sys
 from pathlib import Path
 import os
 
@@ -21,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-import sys 
+
 
 def find_or_create_secret_key():
     """ 
@@ -29,8 +30,8 @@ def find_or_create_secret_key():
     Otherwise, generate a new secret key, save it in secret_key.py, and return the key.
     """
     SECRET_KEY_DIR = os.path.dirname(__file__)
-    SECRET_KEY_FILEPATH = os.path.join(SECRET_KEY_DIR, 'secret_key.py') 
-    sys.path.insert(1,SECRET_KEY_DIR) 
+    SECRET_KEY_FILEPATH = os.path.join(SECRET_KEY_DIR, 'secret_key.py')
+    sys.path.insert(1, SECRET_KEY_DIR)
 
     if os.path.isfile(SECRET_KEY_FILEPATH):
         from secret_key import SECRET_KEY
@@ -40,16 +41,18 @@ def find_or_create_secret_key():
         chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&amp;*(-_=+)'
         new_key = get_random_string(50, chars)
         with open(SECRET_KEY_FILEPATH, 'w') as f:
-            f.write("# Django secret key\n# Do NOT check this into version control.\n\nSECRET_KEY = '%s'\n" % new_key)
+            f.write(
+                "# Django secret key\n# Do NOT check this into version control.\n\nSECRET_KEY = '%s'\n" % new_key)
         from secret_key import SECRET_KEY
         return SECRET_KEY
+
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = find_or_create_secret_key()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['localhost','127.0.0.1'] 
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -164,4 +167,3 @@ MEDIA_URL = '/gallery/'
 LOGIN_URL = '/login_view/'
 
 AUTH_USER_MODEL = "user_faq.GamefaqUser"
-

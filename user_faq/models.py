@@ -15,6 +15,7 @@ class GamefaqUser(AbstractUser):
     followers = models.ManyToManyField("self", symmetrical=False, blank=True)
     favorited_games = models.ManyToManyField(
         Game, symmetrical=False, related_name="user_fav")
+    image = models.ImageField(upload_to="gallery", blank=True)
 
     def __str__(self):
         return self.username

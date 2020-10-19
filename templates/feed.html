@@ -1,30 +1,40 @@
-{% include "bootstrap.html" %}{% include "navbar.html" %}
+{% include "bootstrap.html" %}{% load static %}<link
+  rel="stylesheet"
+  href="{% static 'css/feed.css' %}"
+  type="text/css"/>{% include "navbar.html" %}
 
-<h1>Activity for users {{request.user.username}} is following:</h1>
-<h3>Gamefaqs:</h3>
+<div class="jumbotron bg-dark text-danger">
+  <h1 class="display-4">Activity Feed</h1>
+  <br/>
+  <br/>
+  <p class="lead">Posts by followed users:</p>
+  <hr class="my-4">
+  
+</div>
+<h3 class="text-light">Gamefaqs:</h3>
 {% for faq in faqs %}
 
-<div class="card">
+<div class="card bg-dark text-danger">
   <h5 class="card-header">Gamefaq:</h5>
   <div class="card-body">
     <h5 class="card-title">{{faq.title}}</h5>
     <p class="card-text">
       posted by  <a href="/user_profile_view/{{faq.author.id}}/">{{faq.author.username}}
     </p>
-    <a href="/gamefaq/{{faq.id}}/" class="btn btn-primary">View Gamefaq</a>
+    <a href="/gamefaq/{{faq.id}}/" class="btn btn-danger">View Gamefaq</a>
   </div>
 </div>
 {% endfor %} 
-<h3>News Posts:</h3>
+<h3 class="text-light">News Posts:</h3>
 {% for post in news %}
-<div class="card">
+<div class="card bg-dark text-danger">
   <h5 class="card-header">News Post:</h5>
   <div class="card-body">
     <h5 class="card-title">{{post.title}}</h5>
     <p class="card-text">
       posted by  <a href="/user_profile_view/{{post.author.id}}/">{{post.author.username}}
     </p>
-    <a href="/newspost/{{post.id}}/" class="btn btn-primary">View NewsPost</a>
+    <a href="/newspost/{{post.id}}/" class="btn btn-danger">View NewsPost</a>
   </div>
 </div>
 {% endfor %}
