@@ -13,8 +13,8 @@ body {
 .card {
   opacity: 0.9;
   margin-top: -2%;
-
   display: flex;
+  height: 600px;
 }
 
 .card-group {

@@ -19,7 +19,7 @@ def ReviewsView(request, faqid):
 class CreateReview(LoginRequiredMixin, TemplateView):
     def get(self, request, faqid):
         f = ReviewForm()
-        return render(request, "form.html", {"f": f})
+        return render(request, "revform.html", {"f": f})
 
     def post(self, request, faqid):
         thefaq = GameFaq.objects.get(id=faqid)
@@ -41,7 +41,7 @@ class CreateReview(LoginRequiredMixin, TemplateView):
                     isreccomend=reccomend
                 )
 
-                return HttpResponseRedirect(reverse('home'))
+                return HttpResponseRedirect('')
 
 
 class Edit_ReviewView(LoginRequiredMixin, TemplateView):
@@ -58,9 +58,9 @@ class Edit_ReviewView(LoginRequiredMixin, TemplateView):
                 "isreccomend": reccomend
             }
             f = ReviewForm(initial=data)
-            return render(request, "form.html", {"f": f})
+            return render(request, "revform.html", {"f": f})
         else:
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect('')
 
     def post(self, request, reviewid):
         isreccomend = False

@@ -14,9 +14,9 @@ class SignupForm(forms.ModelForm):
 
 
 class GamefaqUserForm(forms.Form):
-    displayname = forms.CharField(max_length=80, required=False)
-    bio = forms.CharField(widget=forms.Textarea, required=False)
-    email = forms.EmailField(max_length=250, required=False)
+    displayname = forms.CharField(max_length=80, required=False, widget=forms.TextInput(attrs={'placeholder': 'Edit displayname...'}))
+    bio = forms.CharField(widget=forms.Textarea({'placeholder': 'Edit bio...'}))
+    email = forms.EmailField(max_length=250, required=False, widget=forms.TextInput(attrs={'placeholder': 'Edit email...'}))
 
 
 class CommentForm(forms.ModelForm):
