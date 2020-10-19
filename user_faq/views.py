@@ -66,7 +66,6 @@ class edit_user_profile_view(LoginRequiredMixin, TemplateView):
         data = {
             "displayname": faq_user.displayname,
             "bio": faq_user.bio,
-            "preferred_systems": faq_user.preferred_systems,
             "email": faq_user.email
         }
         form = GamefaqUserForm(initial=data)
@@ -80,7 +79,6 @@ class edit_user_profile_view(LoginRequiredMixin, TemplateView):
                 data = form.cleaned_data
                 faq_user.displayname = data["displayname"]
                 faq_user.bio = data["bio"]
-                faq_user.preferred_systems = data["preferred_systems"]
                 faq_user.email = data["email"]
                 faq_user.save()
                 return HttpResponseRedirect(reverse('user_profile', args=[faq_user.id]))

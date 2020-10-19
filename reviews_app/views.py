@@ -10,7 +10,7 @@ from django.views.generic.edit import DeleteView
 
 # Create your views here.
 def ReviewsView(request, faqid):
-    reviews = Review.objects.filter(gamefaq=faqid)
+    reviews = Review.objects.filter(gamefaq=faqid).order_by("-id")
     faq = GameFaq.objects.get(id=faqid)
 
     return render(request, "reviews.html", {"reviews": reviews, 'faq': faq})
