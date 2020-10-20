@@ -46,6 +46,7 @@
     <h5 class="card-title">GameFaqs:</h5>
     <div class="card-body">
     <ul class="list-group">
+    
       {% for e in f %} {% if e.ptype == 'GAMEFAQ' %}
       <li>
         <a href="/gamefaq/{{e.id}}" class="text-danger">{{e.title}}</a> For
