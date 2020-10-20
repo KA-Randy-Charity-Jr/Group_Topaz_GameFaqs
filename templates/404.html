@@ -1,2 +1,5 @@
-{% include "bootstrap.html" %} {% include "navbar.html"%}
-<h1>Just click Topaz bruh 🤦</h1>
+{% include "bootstrap.html" %} {% include "navbar.html"%}{% load static %}
+<link rel="stylesheet" href="{% static 'css/404.css' %}" type="text/css" />
+
+<img src="{% static 'css/images/dance.gif' %}" class="center" />
+<h1>Oops... Looks Like You've Crashed!</h1>

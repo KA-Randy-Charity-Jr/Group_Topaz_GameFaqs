@@ -34,14 +34,14 @@ class CreateReview(LoginRequiredMixin, TemplateView):
                 else:
                     thefaq.downvotes -= 1
                 thefaq.save()
-                Review.objects.create(
+                r = Review.objects.create(
                     body=data.get('body'),
                     author=request.user,
                     gamefaq=GameFaq.objects.get(id=faqid),
                     isreccomend=reccomend
                 )
 
-                return HttpResponseRedirect('')
+                return HttpResponseRedirect(f"/{r.gamefaq.id}/reviews/")
 
 
 class Edit_ReviewView(LoginRequiredMixin, TemplateView):
