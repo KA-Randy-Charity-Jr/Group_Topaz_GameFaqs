@@ -1,26 +1,33 @@
-{% include "bootstrap.html" %}{% include "navbar.html" %}
+{% include "bootstrap.html" %}{% load static %}<link
+  rel="stylesheet"
+  href="{% static 'css/search.css' %}"
+  type="text/css"
+/>{% include "navbar.html" %}
 <style>
-  div{
+  div {
     text-align: center;
   }
-  a{
+  a {
     color: blueviolet;
   }
 </style>
-<div classname="container">
-  <h1>Search Results</h1>
+<body>
+  <div class="container bg-dark text-danger">
+    <h1>Search Results</h1>
 
-  <ul>
-    {% for game in object_list %}
-    <li>
-      {% if game.image.url %}
-      <img width="50" height="50" src="{{ game.image.url }}" />
+    <ul>
+      {% for game in object_list %}
 
-      <a href="/game/{{game.id}}/">{{ game.title }}</a>
-      {% else %}
-      <a href="/gamefaq/{{game.id}}/">{{ game.title }}</a>
-      {% endif %}
-    </li>
-    {% endfor %}
-  </ul>
-</div>
+      <li>
+        {% if game.image.url %}
+        <img width="50" height="50" src="{{ game.image.url }}" />
+        Game:
+        <a href="/game/{{game.id}}/" class="text-danger">{{ game.title }}</a>
+        {% else %} Gamefaq:
+        <a href="/gamefaq/{{game.id}}/" class="text-danger">{{ game.title }}</a>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</body>

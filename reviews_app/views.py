@@ -41,7 +41,7 @@ class CreateReview(LoginRequiredMixin, TemplateView):
                     isreccomend=reccomend
                 )
 
-                return HttpResponseRedirect('')
+                return HttpResponseRedirect(f"/{faqid}/reviews")
 
 
 class Edit_ReviewView(LoginRequiredMixin, TemplateView):

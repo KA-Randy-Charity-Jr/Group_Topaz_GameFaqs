@@ -62,7 +62,7 @@ def newgamefaqview(request, gameid):
                 body=data.get('body'),
                 difficulty=data.get('difficulty'), author=(request.user),
                 ptype=data.get('ptype'), consoles=data.get('console')),
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect(f"/game/{gameid}")
     return render(request, "form.html", {"f": f})
 
 

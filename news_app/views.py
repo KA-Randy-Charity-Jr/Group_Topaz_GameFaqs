@@ -29,7 +29,7 @@ class Newspostform(LoginRequiredMixin, TemplateView):
                     game=game
                 )
 
-                return HttpResponseRedirect(reverse('home'))
+                return HttpResponseRedirect(f"/game/{gameid}")
 
 
 def NewpostView(request, newsid):
