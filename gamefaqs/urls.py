@@ -88,6 +88,9 @@ urlpatterns = [
     path('activityfeed/', gamefaqviews.ActivityFeed.as_view(), name="activityfeed"),
     path('upload/<slug:pk>/', userviews.Upload_photo_view.as_view(),
          name='Photo_upload'),
+    path('404/', gamefaqviews.handler404 ),
+    path('500/', gamefaqviews.handler500 )
+
 ]
 
 handler404 = 'gamefaq_app.views.handler404'

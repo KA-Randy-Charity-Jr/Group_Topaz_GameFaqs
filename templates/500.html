@@ -1,2 +1,6 @@
-{% include "bootstrap.html" %} {% include "navbar.html"%}
-<h1>AINT NO PAGE HERE FOO!</h1>
+{% include "bootstrap.html" %} {% include "navbar.html"%}{% load static %}
+<link rel="stylesheet" href="{% static 'css/500.css' %}" type="text/css" />
+
+
+<img src="{% static 'css/images/fight.gif' %}" class='center' />
+<h1>Oops... You've Ran Into a Conflict!</h1>
