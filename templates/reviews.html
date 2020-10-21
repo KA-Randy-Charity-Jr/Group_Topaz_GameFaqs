@@ -26,7 +26,14 @@
     {% endif %}
     <p class="card-text">{{review.body}}</p>
     <p class="card-text">
-      Written by:
+      Written by: {% if review.author.image %}
+      <img
+        id="thumbnail"
+        width="40"
+        height="40"
+        src="{{ review.author.image.url }}"
+      />
+      {% endif %}
       <a href="/user_profile_view/{{review.author.id}}/" class="text-danger">
         {{review.author}}</a
       >

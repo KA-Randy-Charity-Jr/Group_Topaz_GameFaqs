@@ -9,3 +9,7 @@ body {
 
   display: flex;
 }
+
+#thumbnail {
+  border-radius: 50%;
+}

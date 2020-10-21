@@ -46,11 +46,11 @@
     <h5 class="card-title">GameFaqs:</h5>
     <div class="card-body">
     <ul class="list-group">
-    
+
       {% for e in f %} {% if e.ptype == 'GAMEFAQ' %}
       <li>
         <a href="/gamefaq/{{e.id}}" class="text-danger">{{e.title}}</a> For
-        {{e.consoles.name}}
+       <a href="/console/{{e.consoles.id}}/" class="text-danger"> {{e.consoles.name}}</a>
       </li>
       {% endif %} {% endfor %}
     </div>
@@ -63,8 +63,8 @@
     <ul class="list-group list-group-flush">
       {% for e in f %} {% if e.ptype == 'CHEATCODES' %}
       <li>
-        <a href="/gamefaq/{{e.id}}" class="text-danger">{{e.title}}</a> For
-        {{e.consoles.name}}
+        <a href="/gamefaq/{{e.id}}/" class="text-danger">{{e.title}}</a> For
+       <a href="/console/{{e.consoles.id}}/" class="text-danger"> {{e.consoles.name}}</a>
       </li>
       {% endif %} {% endfor %}
     </div>
@@ -78,7 +78,7 @@
     <ul class="list-group list-group-flush">
       {% for e in n %}
       <li>
-        <a href="/newspost/{{e.id}}/" class="text-danger">{{e.title}} by {{e.author}}</a>
+        <a href="/newspost/{{e.id}}/" class="text-danger">{{e.title}}</a> by <a href="/user_profile_view/{{e.author.id}}/" class="text-danger">{{e.author}}</a>
       </li>
       {% endfor %}
     </div>

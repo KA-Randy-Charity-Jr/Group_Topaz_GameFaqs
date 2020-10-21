@@ -9,7 +9,14 @@
   <p>Related to game: {{post.game}}</p>
   <div class="card-body">
     <h5 class="card-title">
-      written by:
+      written by: {% if post.author.image %}
+      <img
+        id="thumbnail"
+        width="40"
+        height="40"
+        src="{{ post.author.image.url }}"
+      />
+      {% endif %}
       <a href="/user_profile_view/{{post.author.id}}/" class="text-danger"
         >{{post.author.username}}</a
       >

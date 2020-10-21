@@ -13,3 +13,7 @@ body {
 .jumbotron {
   opacity: 0.9;
 }
+
+#thumbnail {
+  border-radius: 50%;
+}

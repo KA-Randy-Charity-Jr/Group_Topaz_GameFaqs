@@ -86,7 +86,17 @@
 <div class="card bg-dark text-light">
   <div class="card-header">Comment:</div>
   <div class="card-body">
-    <h5 class="card-title">{{comment.author.username}}</h5>
+    <h5 class="card-title">
+      {% if comment.author.image %}
+      <img
+        id="thumbnail"
+        width="40"
+        height="40"
+        src="{{ comment.author.image.url }}"
+      />
+      {% endif %}{{comment.author.username}}
+    </h5>
+
     <p class="card-text">{{comment.body}}</p>
     <p class="card-text">{{comment.post_date}}</p>
     {% if request.user.id == comment.author.id %}

@@ -28,3 +28,6 @@ class User_Comments(models.Model):
     author = models.ForeignKey(
         GamefaqUser, on_delete=models.CASCADE, related_name="comment_author")
     post_date = models.DateField(default=timezone.now)
+
+    def __str__(self):
+        return f"{self.author}Comment{self.id}"

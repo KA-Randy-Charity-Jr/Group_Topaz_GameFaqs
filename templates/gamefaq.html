@@ -1,11 +1,15 @@
-{% include "bootstrap.html" %} {% include "navbar.html" %}<body class="bg-dark"> {% for e in f %}
+{% include "bootstrap.html" %} {% include "navbar.html" %}<style>
+#thumbnail {
+  border-radius: 50%;
+}</style>
+<body class="bg-dark"> {% for e in f %}
 <div class="container bg-dark text-danger">
 <div class="card bg-dark text-danger" style="width: 18rem;">
   <img src="{{e.game.image.url}}" class="card-img-top" alt="...">
   <div class="card-body">
   <h5 class="card-title"> FOR <a href="/game/{{e.game.id}}/" class="text-danger">{{e.game.title}}</a> </h5>
-    <h5 class="card-title"> GAMEFAQ Reviews</h5>
-    <p class="card-text">this gamefaq has {{r}} reviews</p>
+    <h5 class="card-title"> GAMEFAQ Reviews:</h5>
+    <p class="card-text">this gamefaq has {{r}} reviews:</p>
 {% if e.added > 1 %}
 <p class="card-text">reviews on this gamefaq are mostly positive</p>
 {% elif e.added == 0 %}
@@ -22,7 +26,15 @@
 <br />
 <br />
 <p>
-  Written by
+  Written by:
+        {% if e.author.image %}
+      <img
+        id="thumbnail"
+        width="40"
+        height="40"
+        src="{{ e.author.image.url }}"
+      />
+      {% endif %}
   <a href="/user_profile_view/{{e.author.id}}/" class="text-danger">{{e.author.username}}</a>
 </p>
 {% if request.user.username == e.author.username %}
